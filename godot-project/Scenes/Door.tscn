@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://drqiheu4otbcl"]
+
+[ext_resource type="Script" path="res://Scripts/door.gd" id="1_da803"]
+[ext_resource type="Texture2D" uid="uid://dq1hcwoy74bqk" path="res://Arts/door_room/door1.png" id="1_tu3es"]
+
+[sub_resource type="Animation" id="Animation_g7git"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3de88"]
+resource_name = "float"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ugumm"]
+_data = {
+"RESET": SubResource("Animation_g7git"),
+"float": SubResource("Animation_3de88")
+}
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_da803")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_tu3es")
+centered = false
+
+[node name="ClickDetect" type="Control" parent="Sprite2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 51.0
+size_flags_horizontal = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ugumm")
+}
+autoplay = "float"
