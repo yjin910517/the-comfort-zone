@@ -1,0 +1,186 @@
+[gd_scene load_steps=26 format=3 uid="uid://boms4qbrf27st"]
+
+[ext_resource type="Script" path="res://Scripts/arcade_room.gd" id="1_2cclc"]
+[ext_resource type="Texture2D" uid="uid://meum05s315ut" path="res://Arts/arcade/arcade_room_bg.png" id="1_ydd03"]
+[ext_resource type="Texture2D" uid="uid://cexph76tfja7k" path="res://Arts/arcade/arcade1.png" id="2_bw7ws"]
+[ext_resource type="Texture2D" uid="uid://72w8knqgcgk3" path="res://Arts/arcade/arcade2.png" id="3_l2hgu"]
+[ext_resource type="Texture2D" uid="uid://b5l76g8xh12vb" path="res://Arts/arcade/arcade3.png" id="4_wvvuk"]
+[ext_resource type="Texture2D" uid="uid://edphl6m5ohju" path="res://Arts/arcade/arcade4.png" id="5_3lph1"]
+[ext_resource type="Texture2D" uid="uid://dblcqe05a0bct" path="res://Arts/arcade/arcade_menu_bg1.png" id="7_7hy57"]
+[ext_resource type="Texture2D" uid="uid://iak0gb5yfkko" path="res://Arts/arcade/arcade_menu_buttons1.png" id="8_ijr0l"]
+[ext_resource type="Texture2D" uid="uid://dqxjvods6lj3v" path="res://Arts/arcade/arcade_menu_bg2.png" id="8_qeddg"]
+[ext_resource type="Texture2D" uid="uid://6jsur862yp43" path="res://Arts/arcade/arcade_menu_bg3.png" id="9_7jkek"]
+[ext_resource type="Texture2D" uid="uid://dhxdq7vf27cbx" path="res://Arts/arcade/arcade_menu_buttons3.png" id="9_umly4"]
+[ext_resource type="Texture2D" uid="uid://b036fqdy7j4qi" path="res://Arts/arcade/arcade_menu_buttons2.png" id="10_ctir8"]
+[ext_resource type="Texture2D" uid="uid://ck68ci1kf8ufn" path="res://Arts/arcade/arcade_menu_buttons4.png" id="11_dxq8j"]
+[ext_resource type="Texture2D" uid="uid://b3syuc7sghtgp" path="res://Arts/arcade/arcade_won_screens4.png" id="16_lxv00"]
+[ext_resource type="Texture2D" uid="uid://ggs2c4rj24rc" path="res://Arts/arcade/arcade_menu_buttons5.png" id="16_rjywv"]
+[ext_resource type="Texture2D" uid="uid://dytjiv3rha4st" path="res://Arts/arcade/arcade_won_screens5.png" id="17_2hwlb"]
+[ext_resource type="Texture2D" uid="uid://4bwiskpimc4b" path="res://Arts/arcade/arcade_menu_buttons6.png" id="17_tvq04"]
+[ext_resource type="Texture2D" uid="uid://coby7lx62sewn" path="res://Arts/arcade/arcade_won_screens6.png" id="18_28q8u"]
+[ext_resource type="Texture2D" uid="uid://0yoxt76lbdo1" path="res://Arts/arcade/arcade_won_screens1.png" id="21_tr56c"]
+[ext_resource type="Texture2D" uid="uid://cvdwbh2t0ssag" path="res://Arts/arcade/arcade_won_screens2.png" id="22_a2lcx"]
+[ext_resource type="Texture2D" uid="uid://uqbkgu2r8y0o" path="res://Arts/arcade/arcade_won_screens3.png" id="23_dtdqh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhapx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bw7ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l2hgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wvvuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3lph1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q5wfa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_7hy57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qeddg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7jkek")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bo2df"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_lxv00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2hwlb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_28q8u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bfwkr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_tr56c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_a2lcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_dtdqh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="ArcadeRoom" type="Node2D"]
+script = ExtResource("1_2cclc")
+
+[node name="RoomView" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="TextureRect" parent="RoomView"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_ydd03")
+
+[node name="ArcadeIcon" type="AnimatedSprite2D" parent="RoomView"]
+position = Vector2(477, 265)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qhapx")
+autoplay = "default"
+frame_progress = 0.0997748
+
+[node name="ClickDetect" type="Control" parent="RoomView"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 326.0
+offset_top = 50.0
+offset_right = 629.0
+offset_bottom = 479.0
+
+[node name="MenuView" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="MenuView"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_q5wfa")
+autoplay = "default"
+frame_progress = 0.928701
+centered = false
+
+[node name="EasyButton" type="TextureButton" parent="MenuView"]
+offset_left = 180.0
+offset_top = 360.0
+offset_right = 324.0
+offset_bottom = 400.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("8_ijr0l")
+texture_hover = ExtResource("9_umly4")
+
+[node name="HardButton" type="TextureButton" parent="MenuView"]
+offset_left = 512.0
+offset_top = 360.0
+offset_right = 656.0
+offset_bottom = 400.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("10_ctir8")
+texture_hover = ExtResource("11_dxq8j")
+
+[node name="EasyWin" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="EasyWin"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bo2df")
+autoplay = "default"
+frame_progress = 0.894811
+centered = false
+
+[node name="Continue" type="TextureButton" parent="EasyWin"]
+offset_left = 341.0
+offset_top = 379.0
+offset_right = 485.0
+offset_bottom = 419.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("16_rjywv")
+texture_hover = ExtResource("17_tvq04")
+
+[node name="HardWin" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="HardWin"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bfwkr")
+autoplay = "default"
+frame_progress = 0.548627
+centered = false
+
+[node name="ClickDetect" type="Control" parent="HardWin"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 382.0
+offset_top = 189.0
+offset_right = 564.0
+offset_bottom = 373.0

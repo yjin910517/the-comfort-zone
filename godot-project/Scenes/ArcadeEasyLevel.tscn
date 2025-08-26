@@ -1,0 +1,111 @@
+[gd_scene load_steps=16 format=4 uid="uid://bxbvxjue6148t"]
+
+[ext_resource type="Script" path="res://Scripts/arcade_level.gd" id="1_mnkex"]
+[ext_resource type="Texture2D" uid="uid://ce250k6eayeyt" path="res://Arts/arcade/arcade_instructions.png" id="1_ueaij"]
+[ext_resource type="Texture2D" uid="uid://duc5cl0k0ylnq" path="res://Arts/arcade/arcade_tileset.png" id="1_yvarv"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="2_1ol12"]
+[ext_resource type="Texture2D" uid="uid://l5o17vpqov4y" path="res://Arts/arcade/arcade_character1.png" id="3_cnc87"]
+[ext_resource type="Texture2D" uid="uid://dwrivf76q7toy" path="res://Arts/arcade/arcade_character2.png" id="4_3nngp"]
+[ext_resource type="Script" path="res://Scripts/arcade_finish.gd" id="5_funjn"]
+[ext_resource type="Texture2D" uid="uid://b5a4jf7gq3stv" path="res://Arts/memories/arcade_icons1.png" id="6_4fnfp"]
+[ext_resource type="Texture2D" uid="uid://dnt0s8y06oxgt" path="res://Arts/memories/arcade_icons2.png" id="7_hcjgu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rdfx5"]
+texture = ExtResource("1_yvarv")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_bxo8l"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_rdfx5")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wa11y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cnc87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3nngp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bltks"]
+radius = 6.0208
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bclhp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4fnfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hcjgu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydmth"]
+size = Vector2(16, 16)
+
+[node name="ArcadeEasy" type="Node2D"]
+script = ExtResource("1_mnkex")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.309804, 0.560784, 0.729412, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 33.0
+offset_right = 128.0
+offset_bottom = 270.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_ueaij")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(160, 40)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAFAAAAAAABAAEAAAARAA4AAAABAAEAAAAPAA4AAAABAAEAAAAQAA4AAAAAAAEAAAAGAAAAAAAAAAEAAAAPAA8AAAABAAEAAAAQAA8AAAABAAEAAAARAA8AAAABAAEAAAAFAP//AAABAAEAAAAGAP//AAABAAEAAAAHAP//AAABAAEAAAAHAAAAAAABAAEAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAPAA0AAAAAAAAAAAAHAAEAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAEAAAAGAAMAAAAAAAEAAAAIAAcAAAAAAAEAAAAJAAcAAAAAAAEAAAAKAAcAAAAAAAEAAAALAAcAAAAAAAEAAAAQAAoAAAAAAAEAAAAQAAsAAAAAAAEAAAAQAAwAAAAAAAEAAAAQAA0AAAAAAAEAAAAPAAoAAAAAAAEAAAAOAAoAAAAAAAEAAAANAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAAJAAgAAAAAAAEAAAAJAAkAAAAAAAEAAAAJAAoAAAAAAAEAAAAMAAcAAAAAAAEAAAAQAAkAAAAAAAEAAAAQAAgAAAAAAAEAAAAQAAcAAAAAAAEAAAANAAcAAAAAAAEAAAAIAAoAAAAAAAEAAAAMAAsAAAAAAAAAAAALAAYAAAAAAAEAAAALAAUAAAAAAAEAAAAIAAYAAAAAAAEAAAAIAAUAAAAAAAEAAAAIAAQAAAAAAAEAAAAHAAMAAAAAAAEAAAAIAAMAAAAAAAEAAAAPAAwAAAAAAAAAAAAPAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAOAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_bxo8l")
+
+[node name="Player" type="CharacterBody2D" parent="TileMapLayer"]
+position = Vector2(264, 233)
+script = ExtResource("2_1ol12")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TileMapLayer/Player"]
+sprite_frames = SubResource("SpriteFrames_wa11y")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/Player"]
+position = Vector2(0, -0.5)
+shape = SubResource("CircleShape2D_bltks")
+
+[node name="Finish" type="Area2D" parent="TileMapLayer"]
+position = Vector2(104, 8)
+script = ExtResource("5_funjn")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TileMapLayer/Finish"]
+sprite_frames = SubResource("SpriteFrames_bclhp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/Finish"]
+shape = SubResource("RectangleShape2D_ydmth")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TileMapLayer/Finish"]
