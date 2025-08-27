@@ -9,9 +9,9 @@
 [ext_resource type="Script" path="res://Scripts/token.gd" id="5_00bqc"]
 [ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="5_lbaga"]
 [ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="6_3juyn"]
-[ext_resource type="Texture2D" uid="uid://b5a4jf7gq3stv" path="res://Arts/memories/arcade_icons1.png" id="8_ljnqj"]
+[ext_resource type="Texture2D" uid="uid://b5a4jf7gq3stv" path="res://Arts/arcade/arcade_icons1.png" id="8_ljnqj"]
 [ext_resource type="Script" path="res://Scripts/arcade_finish.gd" id="9_6bug5"]
-[ext_resource type="Texture2D" uid="uid://dnt0s8y06oxgt" path="res://Arts/memories/arcade_icons2.png" id="9_p7yjd"]
+[ext_resource type="Texture2D" uid="uid://dnt0s8y06oxgt" path="res://Arts/arcade/arcade_icons2.png" id="9_p7yjd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2komy"]
 texture = ExtResource("1_d26gl")

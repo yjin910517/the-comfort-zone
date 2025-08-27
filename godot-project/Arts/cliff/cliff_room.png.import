@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnt0s8y06oxgt"
-path="res://.godot/imported/arcade_icons2.png-e5d436ebc2e735d3b6113d377796dea5.ctex"
+uid="uid://caa36nyvpgk07"
+path="res://.godot/imported/cliff_room.png-4b64814860c75e2382e7a067995affb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/memories/arcade_icons2.png"
-dest_files=["res://.godot/imported/arcade_icons2.png-e5d436ebc2e735d3b6113d377796dea5.ctex"]
+source_file="res://Arts/cliff/cliff_room.png"
+dest_files=["res://.godot/imported/cliff_room.png-4b64814860c75e2382e7a067995affb2.ctex"]
 
 [params]
 

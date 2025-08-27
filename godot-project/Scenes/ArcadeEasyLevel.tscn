@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://l5o17vpqov4y" path="res://Arts/arcade/arcade_character1.png" id="3_cnc87"]
 [ext_resource type="Texture2D" uid="uid://dwrivf76q7toy" path="res://Arts/arcade/arcade_character2.png" id="4_3nngp"]
 [ext_resource type="Script" path="res://Scripts/arcade_finish.gd" id="5_funjn"]
-[ext_resource type="Texture2D" uid="uid://b5a4jf7gq3stv" path="res://Arts/memories/arcade_icons1.png" id="6_4fnfp"]
-[ext_resource type="Texture2D" uid="uid://dnt0s8y06oxgt" path="res://Arts/memories/arcade_icons2.png" id="7_hcjgu"]
+[ext_resource type="Texture2D" uid="uid://b5a4jf7gq3stv" path="res://Arts/arcade/arcade_icons1.png" id="6_4fnfp"]
+[ext_resource type="Texture2D" uid="uid://dnt0s8y06oxgt" path="res://Arts/arcade/arcade_icons2.png" id="7_hcjgu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rdfx5"]
 texture = ExtResource("1_yvarv")

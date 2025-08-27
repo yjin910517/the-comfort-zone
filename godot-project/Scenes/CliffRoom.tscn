@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi7f0fxw41sov"]
+
+[ext_resource type="Texture2D" uid="uid://caa36nyvpgk07" path="res://Arts/cliff/cliff_room.png" id="1_7fi8o"]
+[ext_resource type="Texture2D" uid="uid://blx7naofhb3cm" path="res://Arts/cliff/cliff_poster1.png" id="2_gm5u4"]
+[ext_resource type="Texture2D" uid="uid://bhd656we3ncsn" path="res://Arts/cliff/cliff_poster2.png" id="3_5u74p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1pojr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gm5u4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5u74p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CliffRoom" type="Node2D"]
+
+[node name="RoomView" type="Node2D" parent="."]
+
+[node name="Background" type="TextureRect" parent="RoomView"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_7fi8o")
+
+[node name="PosterIcon" type="AnimatedSprite2D" parent="RoomView"]
+position = Vector2(725, 164)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1pojr")
+
+[node name="ClickDetect" type="Control" parent="RoomView"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 603.0
+offset_top = 93.0
+offset_right = 849.0
+offset_bottom = 234.0
+
+[node name="PosterView" type="Node2D" parent="."]
+
+[node name="SignView" type="Node2D" parent="."]
+
+[node name="FlippingView" type="Node2D" parent="."]
