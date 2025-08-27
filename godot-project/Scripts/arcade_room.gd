@@ -1,8 +1,8 @@
 extends Node2D
 
-
+signal token_delivered(room_name)
 signal wake_up(wakeup_reason)
-signal completed_room(room_node)
+signal completed_room(room_name)
 
 
 var levels = {
@@ -91,7 +91,7 @@ func _start_new_level(level_type):
 func _on_arcade_token_collected(token_node):
 	print("arcade pass through the token to main")
 	token_collected = true
-	# to do: pass token to main 
+	emit_signal("token_delivered", "arcade_room")
 	
 	
 # show win screen for easy
@@ -119,5 +119,5 @@ func _on_continue_btn_pressed():
 func _on_door_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		print("proceed to next room")
-		emit_signal("completed_room", self)
+		emit_signal("completed_room", "arcade_room")
 		hard_win.hide()

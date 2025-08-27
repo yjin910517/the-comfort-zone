@@ -11,5 +11,4 @@ func _ready() -> void:
 	
 	
 func _on_level_completed():
-	print("level completed")
 	emit_signal("level_ended", self)

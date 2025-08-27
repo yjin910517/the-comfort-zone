@@ -1,8 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi7f0fxw41sov"]
+[gd_scene load_steps=22 format=3 uid="uid://bi7f0fxw41sov"]
 
 [ext_resource type="Texture2D" uid="uid://caa36nyvpgk07" path="res://Arts/cliff/cliff_room.png" id="1_7fi8o"]
+[ext_resource type="Script" path="res://Scripts/cliff_room.gd" id="1_ynpon"]
 [ext_resource type="Texture2D" uid="uid://blx7naofhb3cm" path="res://Arts/cliff/cliff_poster1.png" id="2_gm5u4"]
 [ext_resource type="Texture2D" uid="uid://bhd656we3ncsn" path="res://Arts/cliff/cliff_poster2.png" id="3_5u74p"]
+[ext_resource type="Texture2D" uid="uid://drvpqe1lb4nuk" path="res://Arts/cliff/cliff_scene1.png" id="4_we4om"]
+[ext_resource type="Texture2D" uid="uid://dxw28pa0gl0pa" path="res://Arts/cliff/cliff_scene2.png" id="5_v01qy"]
+[ext_resource type="Texture2D" uid="uid://dlhy3k13qvhdd" path="res://Arts/cliff/cliff_sign1.png" id="6_6akwv"]
+[ext_resource type="Texture2D" uid="uid://cpsr3ojj46lkm" path="res://Arts/cliff/cliff_sign2.png" id="7_awyii"]
+[ext_resource type="Texture2D" uid="uid://caxn1vh386hdg" path="res://Arts/cliff/cliff_buttons1.png" id="8_o2s2g"]
+[ext_resource type="Texture2D" uid="uid://d1mx1o8tdrvvq" path="res://Arts/cliff/cliff_buttons2.png" id="9_8rqtd"]
+[ext_resource type="Texture2D" uid="uid://blbbjv525aue" path="res://Arts/cliff/cliff_buttons3.png" id="10_m6ibs"]
+[ext_resource type="Texture2D" uid="uid://b8s1rcspwxerw" path="res://Arts/cliff/cliff_buttons4.png" id="11_l10n7"]
+[ext_resource type="Texture2D" uid="uid://6oj3gqpjvrux" path="res://Arts/cliff/cliff_coin_flip1.png" id="12_7hl5x"]
+[ext_resource type="Texture2D" uid="uid://bft4mkdsw51x0" path="res://Arts/cliff/cliff_coin_flip2.png" id="13_qnclb"]
+[ext_resource type="Texture2D" uid="uid://ftteuvltc0re" path="res://Arts/cliff/cliff_outcome_texts1.png" id="15_1eq18"]
+[ext_resource type="Texture2D" uid="uid://dforylfyx1gd5" path="res://Arts/cliff/cliff_outcome_texts2.png" id="16_6j27p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1pojr"]
 animations = [{
@@ -18,9 +31,67 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_fo1mj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_we4om")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v01qy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0wna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6akwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_awyii")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pbcjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_7hl5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qnclb")
+}],
+"loop": true,
+"name": &"flip",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7n5jc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_1eq18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6j27p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="CliffRoom" type="Node2D"]
+script = ExtResource("1_ynpon")
 
 [node name="RoomView" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="Background" type="TextureRect" parent="RoomView"]
 offset_right = 40.0
@@ -42,7 +113,68 @@ offset_right = 849.0
 offset_bottom = 234.0
 
 [node name="PosterView" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="PosterView"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fo1mj")
+autoplay = "default"
+frame_progress = 0.547152
+centered = false
+
+[node name="ClickDetect" type="Control" parent="PosterView"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 458.0
+offset_top = 168.0
+offset_right = 604.0
+offset_bottom = 281.0
 
 [node name="SignView" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Sign" type="AnimatedSprite2D" parent="SignView"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_h0wna")
+autoplay = "default"
+frame_progress = 0.247941
+centered = false
+
+[node name="YesButton" type="TextureButton" parent="SignView"]
+offset_left = 670.0
+offset_top = 317.0
+offset_right = 723.0
+offset_bottom = 341.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("8_o2s2g")
+texture_hover = ExtResource("9_8rqtd")
+
+[node name="NoButton" type="TextureButton" parent="SignView"]
+offset_left = 821.0
+offset_top = 314.0
+offset_right = 874.0
+offset_bottom = 338.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("10_m6ibs")
+texture_hover = ExtResource("11_l10n7")
 
 [node name="FlippingView" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="BG" type="ColorRect" parent="FlippingView"]
+offset_right = 480.0
+offset_bottom = 270.0
+scale = Vector2(2, 2)
+color = Color(0.0823529, 0.113725, 0.156863, 1)
+
+[node name="FlipIcon" type="AnimatedSprite2D" parent="FlippingView"]
+position = Vector2(486, 257)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pbcjp")
+animation = &"flip"
+frame_progress = 0.443797
+
+[node name="FlipText" type="AnimatedSprite2D" parent="FlippingView"]
+position = Vector2(484, 416)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7n5jc")
