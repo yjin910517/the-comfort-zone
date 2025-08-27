@@ -1,0 +1,189 @@
+[gd_scene load_steps=19 format=3 uid="uid://by0o23i3me25s"]
+
+[ext_resource type="Script" path="res://Scripts/spawn_room.gd" id="1_gy4y7"]
+[ext_resource type="Texture2D" uid="uid://wkad05jc8ukb" path="res://Arts/spawn/corridor1.png" id="2_6v63r"]
+[ext_resource type="Texture2D" uid="uid://cw1c3m82epyqr" path="res://Arts/spawn/spawn_room1.png" id="2_ilyup"]
+[ext_resource type="Texture2D" uid="uid://cxd7sdqr0m8fo" path="res://Arts/spawn/spawn_room2.png" id="3_barb8"]
+[ext_resource type="Texture2D" uid="uid://bkej7w2lgh4q6" path="res://Arts/spawn/corridor2.png" id="3_o3mh5"]
+[ext_resource type="Texture2D" uid="uid://dbjk4r18otcpg" path="res://Arts/directions/direction_sign_a1.png" id="4_2w8wu"]
+[ext_resource type="Texture2D" uid="uid://b6bae6synq2q7" path="res://Arts/spawn/corridor3.png" id="4_wsvdr"]
+[ext_resource type="Texture2D" uid="uid://eiu47cpfja8l" path="res://Arts/directions/direction_sign_a2.png" id="5_i6gpn"]
+[ext_resource type="Texture2D" uid="uid://clkp7nsvbx04k" path="res://Arts/spawn/tutorial_room1.png" id="7_da234"]
+[ext_resource type="Texture2D" uid="uid://clfa4wx3g1bip" path="res://Arts/spawn/tutorial_room2.png" id="8_gojvn"]
+[ext_resource type="Script" path="res://Scripts/navigation_in_room.gd" id="11_vpbg2"]
+[ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="12_nipym"]
+[ext_resource type="Texture2D" uid="uid://2qilftnm7y1r" path="res://Arts/directions/direction_sign_a3.png" id="12_pq630"]
+[ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="13_pi6y5"]
+[ext_resource type="Texture2D" uid="uid://csa5v7xfkuw1d" path="res://Arts/directions/direction_sign_a4.png" id="13_xhcgn"]
+[ext_resource type="Script" path="res://Scripts/click_token.gd" id="14_svb5r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_umtbs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6v63r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o3mh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wsvdr")
+}],
+"loop": true,
+"name": &"corridor",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ilyup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_barb8")
+}],
+"loop": true,
+"name": &"spawn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_da234")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gojvn")
+}],
+"loop": true,
+"name": &"tutorial",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_voy2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_nipym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pi6y5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="SpawnRoom" type="Node2D"]
+script = ExtResource("1_gy4y7")
+
+[node name="SpawnView" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="SpawnView"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_umtbs")
+animation = &"spawn"
+centered = false
+
+[node name="Nav0" type="TextureButton" parent="SpawnView"]
+offset_left = 729.0
+offset_top = 333.0
+offset_right = 811.0
+offset_bottom = 375.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_2w8wu")
+texture_hover = ExtResource("5_i6gpn")
+script = ExtResource("11_vpbg2")
+location = "spawn"
+destination = "tutorial"
+
+[node name="TutorialView" type="Node2D" parent="."]
+position = Vector2(1132, 72)
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="TutorialView"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_umtbs")
+animation = &"tutorial"
+centered = false
+
+[node name="Nav1" type="TextureButton" parent="TutorialView"]
+offset_left = 30.0
+offset_top = 399.0
+offset_right = 112.0
+offset_bottom = 441.0
+texture_normal = ExtResource("4_2w8wu")
+texture_hover = ExtResource("5_i6gpn")
+flip_h = true
+script = ExtResource("11_vpbg2")
+location = "tutorial"
+destination = "spawn"
+
+[node name="Nav2" type="TextureButton" parent="TutorialView"]
+offset_left = 843.0
+offset_top = 397.0
+offset_right = 925.0
+offset_bottom = 439.0
+texture_normal = ExtResource("12_pq630")
+texture_hover = ExtResource("13_xhcgn")
+script = ExtResource("11_vpbg2")
+location = "tutorial"
+destination = "corridor"
+
+[node name="Token" type="AnimatedSprite2D" parent="TutorialView"]
+position = Vector2(444, 196)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_voy2b")
+autoplay = "default"
+script = ExtResource("14_svb5r")
+metadata/_edit_group_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TutorialView/Token"]
+
+[node name="ClickControl" type="Control" parent="TutorialView/Token"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Corridor" type="Node2D" parent="."]
+position = Vector2(489, 625)
+
+[node name="Background" type="AnimatedSprite2D" parent="Corridor"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_umtbs")
+animation = &"corridor"
+autoplay = "corridor"
+frame_progress = 0.250759
+centered = false
+
+[node name="Nav3" type="TextureButton" parent="Corridor"]
+offset_left = 35.0
+offset_top = 401.0
+offset_right = 117.0
+offset_bottom = 443.0
+texture_normal = ExtResource("12_pq630")
+texture_hover = ExtResource("13_xhcgn")
+flip_h = true
+script = ExtResource("11_vpbg2")
+location = "corridor"
+destination = "tutorial"
+
+[node name="DoorClick1" type="Control" parent="Corridor"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 259.0
+offset_top = 227.0
+offset_right = 443.0
+offset_bottom = 482.0
+
+[node name="DoorClick2" type="Control" parent="Corridor"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 609.0
+offset_top = 244.0
+offset_right = 787.0
+offset_bottom = 472.0
