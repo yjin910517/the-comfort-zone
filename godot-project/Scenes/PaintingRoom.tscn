@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c8cu18ysse1ix"]
+[gd_scene load_steps=33 format=3 uid="uid://c8cu18ysse1ix"]
 
 [ext_resource type="Script" path="res://Scripts/painting_room.gd" id="1_ihgdt"]
 [ext_resource type="Texture2D" uid="uid://bf7wg4vvukkpy" path="res://Arts/painting/painting1-1.png" id="1_l0jtd"]
@@ -22,8 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="21_uni85"]
 [ext_resource type="Script" path="res://Scripts/click_token.gd" id="22_1ur3c"]
 [ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="22_ypti4"]
+[ext_resource type="Texture2D" uid="uid://ciuxlh1pt7c3r" path="res://Arts/directions/direction_sign_b3.png" id="23_fa0oj"]
 [ext_resource type="Texture2D" uid="uid://ccalf6h68yx35" path="res://Arts/painting/paint_room_mirror_view1.png" id="23_x4237"]
 [ext_resource type="Texture2D" uid="uid://cs000ldfk0dwy" path="res://Arts/painting/paint_room_mirror_view2.png" id="24_1avja"]
+[ext_resource type="Texture2D" uid="uid://das1wjq18aly6" path="res://Arts/directions/direction_sign_b2.png" id="24_giy4k"]
+[ext_resource type="Script" path="res://Scripts/navigation.gd" id="25_6y754"]
 [ext_resource type="Texture2D" uid="uid://bm4oxr45hrnfv" path="res://Arts/painting/paint_room_mirror_view3.png" id="25_sapfl"]
 [ext_resource type="Texture2D" uid="uid://cxilhep8fw7fg" path="res://Arts/painting/paint_room_mirror_view4.png" id="26_m300m"]
 
@@ -171,6 +174,7 @@ animations = [{
 script = ExtResource("1_ihgdt")
 
 [node name="WallView" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="Background" type="ColorRect" parent="WallView"]
 offset_right = 960.0
@@ -226,7 +230,7 @@ offset_right = 32.0
 offset_bottom = 44.0
 
 [node name="Paint4" type="AnimatedSprite2D" parent="WallView"]
-position = Vector2(150, 200)
+position = Vector2(139, 116)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_vtraq")
 animation = &"p4"
@@ -242,7 +246,7 @@ offset_right = 28.0
 offset_bottom = 26.0
 
 [node name="Paint5" type="AnimatedSprite2D" parent="WallView"]
-position = Vector2(156, 374)
+position = Vector2(164, 297)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_vtraq")
 animation = &"p5"
@@ -320,7 +324,19 @@ offset_top = -39.0
 offset_right = 31.0
 offset_bottom = 39.0
 
+[node name="Nav" type="TextureButton" parent="WallView"]
+offset_left = 25.0
+offset_top = 474.0
+offset_right = 70.0
+offset_bottom = 498.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("23_fa0oj")
+texture_hover = ExtResource("24_giy4k")
+script = ExtResource("25_6y754")
+destination = "spawn_room"
+
 [node name="MirrorEntry" type="Node2D" parent="."]
+position = Vector2(63, 43)
 metadata/_edit_group_ = true
 
 [node name="Mirror" type="AnimatedSprite2D" parent="MirrorEntry"]

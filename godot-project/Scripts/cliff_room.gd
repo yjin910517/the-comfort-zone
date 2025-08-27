@@ -2,13 +2,15 @@ extends Node2D
 
 
 signal token_delivered(room_name)
+signal go_to_room(destination_name)
 signal wake_up(wakeup_reason)
-# no need for completed_room because the navigation is always available
 
+@export var room_name: String
 
 @onready var room_view = $RoomView
 @onready var room_click = $RoomView/ClickDetect
 @onready var poster_icon = $RoomView/PosterIcon
+@onready var room_nav = $RoomView/Nav
 
 @onready var poster_view = $PosterView
 @onready var poster_click = $PosterView/ClickDetect
@@ -27,11 +29,18 @@ var token_collected = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	room_nav.connect("pressed", Callable(self, "_on_room_nav"))
+	
 	room_click.connect("gui_input", Callable(self, "_on_room_gui_input"))
 	poster_click.connect("gui_input", Callable(self, "_on_poster_gui_input"))
 	
 	sign_yes.connect("pressed", Callable(self, "_on_yes_btn_pressed"))
 	sign_no.connect("pressed", Callable(self, "_on_no_btn_pressed"))
+	
+	room_view.position = Vector2(0,0)
+	poster_view.position = Vector2(0,0)
+	sign_view.position = Vector2(0,0)
+	flipping_view.position = Vector2(0,0)
 	
 	room_view.show()
 	poster_view.hide()
@@ -39,6 +48,11 @@ func _ready() -> void:
 	flipping_view.hide()
 
 
+func _on_room_nav():
+	emit_signal("go_to_room", room_nav.destination)
+	hide()
+	
+	
 func _on_room_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		poster_view.show()
@@ -84,13 +98,11 @@ func _on_yes_btn_pressed():
 	# if success, emit token collected signal
 	if result_frame == 0:
 		emit_signal("token_delivered", "cliff_room")
-		print("token delivered")
 		flipping_view.hide()
 	
 	# if fail, reset the room and do nothing
 	if result_frame == 1:
 		emit_signal("wake_up", "fall")
-		print("wake up by falling")
 		hide()
 
 

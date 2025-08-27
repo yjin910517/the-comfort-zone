@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://boms4qbrf27st"]
+[gd_scene load_steps=29 format=3 uid="uid://boms4qbrf27st"]
 
 [ext_resource type="Script" path="res://Scripts/arcade_room.gd" id="1_2cclc"]
 [ext_resource type="Texture2D" uid="uid://meum05s315ut" path="res://Arts/arcade/arcade_room_bg.png" id="1_ydd03"]
@@ -7,9 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://b5l76g8xh12vb" path="res://Arts/arcade/arcade3.png" id="4_wvvuk"]
 [ext_resource type="Texture2D" uid="uid://edphl6m5ohju" path="res://Arts/arcade/arcade4.png" id="5_3lph1"]
 [ext_resource type="Texture2D" uid="uid://dblcqe05a0bct" path="res://Arts/arcade/arcade_menu_bg1.png" id="7_7hy57"]
+[ext_resource type="Texture2D" uid="uid://ci44c31yypex2" path="res://Arts/directions/direction_sign_b7.png" id="7_f7lga"]
+[ext_resource type="Texture2D" uid="uid://dkppuqgexvbi2" path="res://Arts/directions/direction_sign_b4.png" id="8_6u5y1"]
 [ext_resource type="Texture2D" uid="uid://iak0gb5yfkko" path="res://Arts/arcade/arcade_menu_buttons1.png" id="8_ijr0l"]
 [ext_resource type="Texture2D" uid="uid://dqxjvods6lj3v" path="res://Arts/arcade/arcade_menu_bg2.png" id="8_qeddg"]
 [ext_resource type="Texture2D" uid="uid://6jsur862yp43" path="res://Arts/arcade/arcade_menu_bg3.png" id="9_7jkek"]
+[ext_resource type="Script" path="res://Scripts/navigation.gd" id="9_miu8s"]
 [ext_resource type="Texture2D" uid="uid://dhxdq7vf27cbx" path="res://Arts/arcade/arcade_menu_buttons3.png" id="9_umly4"]
 [ext_resource type="Texture2D" uid="uid://b036fqdy7j4qi" path="res://Arts/arcade/arcade_menu_buttons2.png" id="10_ctir8"]
 [ext_resource type="Texture2D" uid="uid://ck68ci1kf8ufn" path="res://Arts/arcade/arcade_menu_buttons4.png" id="11_dxq8j"]
@@ -120,7 +123,19 @@ offset_top = 50.0
 offset_right = 629.0
 offset_bottom = 479.0
 
+[node name="Nav" type="TextureButton" parent="RoomView"]
+offset_left = 55.0
+offset_top = 325.0
+offset_right = 98.0
+offset_bottom = 349.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("7_f7lga")
+texture_hover = ExtResource("8_6u5y1")
+script = ExtResource("9_miu8s")
+destination = "painting_room"
+
 [node name="MenuView" type="Node2D" parent="."]
+position = Vector2(25, -7)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="MenuView"]
@@ -149,6 +164,7 @@ texture_normal = ExtResource("10_ctir8")
 texture_hover = ExtResource("11_dxq8j")
 
 [node name="EasyWin" type="Node2D" parent="."]
+position = Vector2(47, 12)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="EasyWin"]
@@ -168,6 +184,7 @@ texture_normal = ExtResource("16_rjywv")
 texture_hover = ExtResource("17_tvq04")
 
 [node name="HardWin" type="Node2D" parent="."]
+position = Vector2(79, 12)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="HardWin"]

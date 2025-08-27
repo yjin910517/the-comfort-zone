@@ -1,13 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://bi7f0fxw41sov"]
+[gd_scene load_steps=25 format=3 uid="uid://bi7f0fxw41sov"]
 
 [ext_resource type="Texture2D" uid="uid://caa36nyvpgk07" path="res://Arts/cliff/cliff_room.png" id="1_7fi8o"]
 [ext_resource type="Script" path="res://Scripts/cliff_room.gd" id="1_ynpon"]
 [ext_resource type="Texture2D" uid="uid://blx7naofhb3cm" path="res://Arts/cliff/cliff_poster1.png" id="2_gm5u4"]
 [ext_resource type="Texture2D" uid="uid://bhd656we3ncsn" path="res://Arts/cliff/cliff_poster2.png" id="3_5u74p"]
 [ext_resource type="Texture2D" uid="uid://drvpqe1lb4nuk" path="res://Arts/cliff/cliff_scene1.png" id="4_we4om"]
+[ext_resource type="Texture2D" uid="uid://dbkil2kxflypa" path="res://Arts/directions/direction_sign_a7.png" id="5_sxpqd"]
 [ext_resource type="Texture2D" uid="uid://dxw28pa0gl0pa" path="res://Arts/cliff/cliff_scene2.png" id="5_v01qy"]
 [ext_resource type="Texture2D" uid="uid://dlhy3k13qvhdd" path="res://Arts/cliff/cliff_sign1.png" id="6_6akwv"]
+[ext_resource type="Texture2D" uid="uid://d2xtivpf6a11u" path="res://Arts/directions/direction_sign_a6.png" id="6_rby8j"]
 [ext_resource type="Texture2D" uid="uid://cpsr3ojj46lkm" path="res://Arts/cliff/cliff_sign2.png" id="7_awyii"]
+[ext_resource type="Script" path="res://Scripts/navigation.gd" id="7_och2a"]
 [ext_resource type="Texture2D" uid="uid://caxn1vh386hdg" path="res://Arts/cliff/cliff_buttons1.png" id="8_o2s2g"]
 [ext_resource type="Texture2D" uid="uid://d1mx1o8tdrvvq" path="res://Arts/cliff/cliff_buttons2.png" id="9_8rqtd"]
 [ext_resource type="Texture2D" uid="uid://blbbjv525aue" path="res://Arts/cliff/cliff_buttons3.png" id="10_m6ibs"]
@@ -112,14 +115,26 @@ offset_top = 93.0
 offset_right = 849.0
 offset_bottom = 234.0
 
+[node name="Nav" type="TextureButton" parent="RoomView"]
+offset_left = 23.0
+offset_top = 243.0
+offset_right = 105.0
+offset_bottom = 285.0
+texture_normal = ExtResource("5_sxpqd")
+texture_hover = ExtResource("6_rby8j")
+flip_h = true
+script = ExtResource("7_och2a")
+destination = "spawn_room"
+
 [node name="PosterView" type="Node2D" parent="."]
+position = Vector2(-11, 41)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="PosterView"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_fo1mj")
 autoplay = "default"
-frame_progress = 0.763783
+frame_progress = 0.41483
 centered = false
 
 [node name="ClickDetect" type="Control" parent="PosterView"]
@@ -131,13 +146,14 @@ offset_right = 604.0
 offset_bottom = 281.0
 
 [node name="SignView" type="Node2D" parent="."]
+position = Vector2(30, 72)
 metadata/_edit_group_ = true
 
 [node name="Sign" type="AnimatedSprite2D" parent="SignView"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_h0wna")
 autoplay = "default"
-frame_progress = 0.681332
+frame_progress = 0.985921
 centered = false
 
 [node name="YesButton" type="TextureButton" parent="SignView"]
@@ -159,6 +175,7 @@ texture_normal = ExtResource("10_m6ibs")
 texture_hover = ExtResource("11_l10n7")
 
 [node name="FlippingView" type="Node2D" parent="."]
+position = Vector2(46, -28)
 metadata/_edit_group_ = true
 
 [node name="BG" type="ColorRect" parent="FlippingView"]

@@ -1,3 +1,24 @@
-[gd_scene format=3 uid="uid://d3f014t608a5p"]
+[gd_scene load_steps=6 format=3 uid="uid://d3f014t608a5p"]
+
+[ext_resource type="PackedScene" uid="uid://by0o23i3me25s" path="res://Scenes/SpawnRoom.tscn" id="1_dymxr"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_pw2wb"]
+[ext_resource type="PackedScene" uid="uid://bi7f0fxw41sov" path="res://Scenes/CliffRoom.tscn" id="2_hjh60"]
+[ext_resource type="PackedScene" uid="uid://c8cu18ysse1ix" path="res://Scenes/PaintingRoom.tscn" id="3_jxguw"]
+[ext_resource type="PackedScene" uid="uid://boms4qbrf27st" path="res://Scenes/ArcadeRoom.tscn" id="4_mopra"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_pw2wb")
+
+[node name="SpawnRoom" parent="." instance=ExtResource("1_dymxr")]
+room_name = "spawn_room"
+
+[node name="CliffRoom" parent="." instance=ExtResource("2_hjh60")]
+room_name = "cliff_room"
+
+[node name="PaintingRoom" parent="." instance=ExtResource("3_jxguw")]
+room_name = "painting_room"
+
+[node name="ArcadeRoom" parent="." instance=ExtResource("4_mopra")]
+room_name = "arcade_room"
+
+[node name="TokenCounter" type="Node2D" parent="."]

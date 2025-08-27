@@ -1,10 +1,12 @@
 extends Node2D
 
 signal token_delivered(room_name)
-signal go_to_room(destination_name)
+signal go_to_room(path_dict)
 
+@export var room_name: String
 
 @onready var spawn_view = $SpawnView
+@onready var spawn_bg = $SpawnView/Background
 @onready var nav0 = $SpawnView/Nav0
 
 @onready var tutorial_view = $TutorialView
@@ -57,6 +59,12 @@ func start_room():
 	corridor.hide()
 
 
+# after the first wakeup, the view changes
+func update_spawn_view():
+	spawn_bg.frame = 1
+	
+
+# navigation inside spawn area
 func _on_view_navigation(path_dict):
 	var from_node = node_mapping[path_dict["from"]]
 	var to_node = node_mapping[path_dict["to"]]
@@ -68,9 +76,11 @@ func _on_view_navigation(path_dict):
 		
 	
 func _on_spawn_token_collected(token_node):
-	print("spawn room pass through the token to main")
 	token_collected = true
+	# update wall visuals
 	tutorial_bg.frame = 1
+	
+	# to do: add another animated text on wall
 	emit_signal("token_delivered", "spawn_room")
 
 

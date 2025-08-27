@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://by0o23i3me25s"]
+[gd_scene load_steps=20 format=3 uid="uid://by0o23i3me25s"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_room.gd" id="1_gy4y7"]
 [ext_resource type="Texture2D" uid="uid://wkad05jc8ukb" path="res://Arts/spawn/corridor1.png" id="2_6v63r"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/navigation_in_room.gd" id="11_vpbg2"]
 [ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="12_nipym"]
 [ext_resource type="Texture2D" uid="uid://2qilftnm7y1r" path="res://Arts/directions/direction_sign_a3.png" id="12_pq630"]
+[ext_resource type="Texture2D" uid="uid://d2xtivpf6a11u" path="res://Arts/directions/direction_sign_a6.png" id="13_b2t44"]
 [ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="13_pi6y5"]
 [ext_resource type="Texture2D" uid="uid://csa5v7xfkuw1d" path="res://Arts/directions/direction_sign_a4.png" id="13_xhcgn"]
 [ext_resource type="Script" path="res://Scripts/click_token.gd" id="14_svb5r"]
@@ -89,13 +90,13 @@ offset_right = 811.0
 offset_bottom = 375.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("4_2w8wu")
-texture_hover = ExtResource("5_i6gpn")
+texture_hover = ExtResource("13_xhcgn")
 script = ExtResource("11_vpbg2")
 location = "spawn"
 destination = "tutorial"
 
 [node name="TutorialView" type="Node2D" parent="."]
-position = Vector2(1132, 72)
+position = Vector2(37, -45)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="TutorialView"]
@@ -110,7 +111,7 @@ offset_top = 399.0
 offset_right = 112.0
 offset_bottom = 441.0
 texture_normal = ExtResource("4_2w8wu")
-texture_hover = ExtResource("5_i6gpn")
+texture_hover = ExtResource("13_xhcgn")
 flip_h = true
 script = ExtResource("11_vpbg2")
 location = "tutorial"
@@ -122,7 +123,7 @@ offset_top = 397.0
 offset_right = 925.0
 offset_bottom = 439.0
 texture_normal = ExtResource("12_pq630")
-texture_hover = ExtResource("13_xhcgn")
+texture_hover = ExtResource("13_b2t44")
 script = ExtResource("11_vpbg2")
 location = "tutorial"
 destination = "corridor"
@@ -150,7 +151,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Corridor" type="Node2D" parent="."]
-position = Vector2(489, 625)
+position = Vector2(118, -104)
+metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="Corridor"]
 scale = Vector2(2, 2)
@@ -166,7 +168,7 @@ offset_top = 401.0
 offset_right = 117.0
 offset_bottom = 443.0
 texture_normal = ExtResource("12_pq630")
-texture_hover = ExtResource("13_xhcgn")
+texture_hover = ExtResource("5_i6gpn")
 flip_h = true
 script = ExtResource("11_vpbg2")
 location = "corridor"

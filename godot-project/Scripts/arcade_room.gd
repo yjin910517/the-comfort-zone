@@ -4,6 +4,7 @@ signal token_delivered(room_name)
 signal wake_up(wakeup_reason)
 signal go_to_room(destination_name)
 
+@export var room_name: String
 
 var levels = {
 	"easy": preload("res://Scenes/ArcadeEasyLevel.tscn"),
@@ -11,6 +12,7 @@ var levels = {
 }
 
 @onready var room_view = $RoomView
+@onready var room_nav = $RoomView/Nav
 @onready var arcade_click = $RoomView/ClickDetect
 
 @onready var menu_view = $MenuView
@@ -27,6 +29,8 @@ var token_collected = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	room_nav.connect("pressed", Callable(self, "_on_room_nav"))
 	
 	arcade_click.connect("gui_input", Callable(self, "_on_arcade_gui_input"))
 	easy_btn.connect("pressed", Callable(self, "_on_easy_btn_pressed"))
@@ -48,7 +52,13 @@ func _ready() -> void:
 	
 	# to do: add arcade bgm and basic sound effect
 	
+
+# room navigation
+func _on_room_nav():
+	emit_signal("go_to_room", room_nav.destination)
+	hide()
 	
+		
 # zoom into screen
 func _on_arcade_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -89,35 +99,32 @@ func _start_new_level(level_type):
 
 # pass the token to main
 func _on_arcade_token_collected(token_node):
-	print("arcade pass through the token to main")
 	token_collected = true
 	emit_signal("token_delivered", "arcade_room")
 	
 	
 # show win screen for easy
 func _on_easy_level_ended(level_node):
-	print("finished easy level")
 	level_node.queue_free()
 	easy_win.show()
 	
 
 # show win screen for hard
 func _on_hard_level_ended(level_node):
-	print("finished hard level")
 	level_node.queue_free()
 	hard_win.show()
 	
 
 # wake up signal to main
 func _on_continue_btn_pressed():
-	print("easy wake up")
 	emit_signal("wake_up", "easy")
 	easy_win.hide()
+	hide()
 
 
 # proceed to next room
 func _on_door_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		print("proceed to next room")
 		emit_signal("go_to_room", "locker_room")
 		hard_win.hide()
+		hide()
