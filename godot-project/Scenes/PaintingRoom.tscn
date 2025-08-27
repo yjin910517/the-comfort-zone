@@ -1,0 +1,339 @@
+[gd_scene load_steps=30 format=3 uid="uid://c8cu18ysse1ix"]
+
+[ext_resource type="Script" path="res://Scripts/painting_room.gd" id="1_ihgdt"]
+[ext_resource type="Texture2D" uid="uid://bf7wg4vvukkpy" path="res://Arts/painting/painting1-1.png" id="1_l0jtd"]
+[ext_resource type="Script" path="res://Scripts/painting_decor.gd" id="1_s7pux"]
+[ext_resource type="Texture2D" uid="uid://ybe3k3l40imo" path="res://Arts/painting/painting7_arcade1.png" id="2_i5wj2"]
+[ext_resource type="Texture2D" uid="uid://djlr3iinvauoq" path="res://Arts/painting/painting1-2.png" id="2_lcbeh"]
+[ext_resource type="Texture2D" uid="uid://cyby3lt50eot4" path="res://Arts/painting/painting2-1.png" id="3_a5wxp"]
+[ext_resource type="Texture2D" uid="uid://e6msdwirg3k3" path="res://Arts/painting/painting7_arcade2.png" id="3_a8e5c"]
+[ext_resource type="Texture2D" uid="uid://byn71gbtn0v1i" path="res://Arts/painting/painting2-2.png" id="4_0v2l5"]
+[ext_resource type="Texture2D" uid="uid://b5kxrl55jo3id" path="res://Arts/painting/painting8_mirror1.png" id="4_rhsia"]
+[ext_resource type="Texture2D" uid="uid://b7o3n6t5m7faa" path="res://Arts/painting/painting8_mirror2.png" id="5_usk3k"]
+[ext_resource type="Texture2D" uid="uid://cpn2knpbcs23j" path="res://Arts/painting/painting8_mirror3.png" id="6_q2d30"]
+[ext_resource type="Texture2D" uid="uid://ecx8d5av25qj" path="res://Arts/painting/painting3-1.png" id="11_8m1rq"]
+[ext_resource type="Texture2D" uid="uid://cs6y4b5qmch56" path="res://Arts/painting/painting3-2.png" id="12_uxsii"]
+[ext_resource type="Texture2D" uid="uid://bq01i270dxcjy" path="res://Arts/painting/painting4-1.png" id="13_ywgwg"]
+[ext_resource type="Texture2D" uid="uid://bk0wc31ade7bs" path="res://Arts/painting/painting4-2.png" id="14_lnm1g"]
+[ext_resource type="Texture2D" uid="uid://cac3ho6u5ptvd" path="res://Arts/painting/painting5-1.png" id="15_tsayo"]
+[ext_resource type="Texture2D" uid="uid://dh46h45hmyqm1" path="res://Arts/painting/painting5-2.png" id="16_xay04"]
+[ext_resource type="Texture2D" uid="uid://ciamswwmflb5j" path="res://Arts/painting/painting6_memory1.png" id="17_n12bb"]
+[ext_resource type="Texture2D" uid="uid://dbyy0kg5eeelr" path="res://Arts/painting/painting6_memory2.png" id="18_perrm"]
+[ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="21_uni85"]
+[ext_resource type="Script" path="res://Scripts/click_token.gd" id="22_1ur3c"]
+[ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="22_ypti4"]
+[ext_resource type="Texture2D" uid="uid://ccalf6h68yx35" path="res://Arts/painting/paint_room_mirror_view1.png" id="23_x4237"]
+[ext_resource type="Texture2D" uid="uid://cs000ldfk0dwy" path="res://Arts/painting/paint_room_mirror_view2.png" id="24_1avja"]
+[ext_resource type="Texture2D" uid="uid://bm4oxr45hrnfv" path="res://Arts/painting/paint_room_mirror_view3.png" id="25_sapfl"]
+[ext_resource type="Texture2D" uid="uid://cxilhep8fw7fg" path="res://Arts/painting/paint_room_mirror_view4.png" id="26_m300m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vtraq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i5wj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a8e5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i5wj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a8e5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i5wj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i5wj2")
+}],
+"loop": true,
+"name": &"arcade",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rhsia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_usk3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_q2d30")
+}],
+"loop": true,
+"name": &"mirror",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l0jtd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lcbeh")
+}],
+"loop": true,
+"name": &"p1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_a5wxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0v2l5")
+}],
+"loop": true,
+"name": &"p2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_8m1rq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_uxsii")
+}],
+"loop": true,
+"name": &"p3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ywgwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lnm1g")
+}],
+"loop": true,
+"name": &"p4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_tsayo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xay04")
+}],
+"loop": true,
+"name": &"p5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_n12bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_perrm")
+}],
+"loop": true,
+"name": &"wave",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oxf1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_uni85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ypti4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqnso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_x4237")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_1avja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_sapfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m300m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="PaintingRoom" type="Node2D"]
+script = ExtResource("1_ihgdt")
+
+[node name="WallView" type="Node2D" parent="."]
+
+[node name="Background" type="ColorRect" parent="WallView"]
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.843137, 0.709804, 0.580392, 1)
+
+[node name="Paint1" type="AnimatedSprite2D" parent="WallView"]
+position = Vector2(572, 379)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vtraq")
+animation = &"p1"
+script = ExtResource("1_s7pux")
+metadata/_edit_group_ = true
+
+[node name="ClickDetect" type="Control" parent="WallView/Paint1"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -36.0
+offset_top = -46.0
+offset_right = 37.0
+offset_bottom = 46.0
+
+[node name="Paint2" type="AnimatedSprite2D" parent="WallView"]
+position = Vector2(388, 152)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vtraq")
+animation = &"p2"
+script = ExtResource("1_s7pux")
+metadata/_edit_group_ = true
+
+[node name="ClickDetect" type="Control" parent="WallView/Paint2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -50.0
+offset_top = -48.0
+offset_right = 51.0
+offset_bottom = 49.0
+
+[node name="Paint3" type="AnimatedSprite2D" parent="WallView"]
+position = Vector2(635, 152)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vtraq")
+animation = &"p3"
+script = ExtResource("1_s7pux")
+metadata/_edit_group_ = true
+
+[node name="ClickDetect" type="Control" parent="WallView/Paint3"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -31.0
+offset_top = -42.0
+offset_right = 32.0
+offset_bottom = 44.0
+
+[node name="Paint4" type="AnimatedSprite2D" parent="WallView"]
+position = Vector2(150, 200)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vtraq")
+animation = &"p4"
+script = ExtResource("1_s7pux")
+metadata/_edit_group_ = true
+
+[node name="ClickDetect" type="Control" parent="WallView/Paint4"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -26.0
+offset_top = -27.0
+offset_right = 28.0
+offset_bottom = 26.0
+
+[node name="Paint5" type="AnimatedSprite2D" parent="WallView"]
+position = Vector2(156, 374)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vtraq")
+animation = &"p5"
+script = ExtResource("1_s7pux")
+metadata/_edit_group_ = true
+
+[node name="ClickDetect" type="Control" parent="WallView/Paint5"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -32.0
+offset_top = -31.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Wave" type="AnimatedSprite2D" parent="WallView"]
+position = Vector2(825, 409)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vtraq")
+animation = &"wave"
+autoplay = "wave"
+frame_progress = 0.778237
+metadata/_edit_group_ = true
+
+[node name="Token" type="AnimatedSprite2D" parent="WallView/Wave"]
+position = Vector2(33, -24)
+sprite_frames = SubResource("SpriteFrames_oxf1p")
+autoplay = "default"
+script = ExtResource("22_1ur3c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WallView/Wave/Token"]
+
+[node name="ClickControl" type="Control" parent="WallView/Wave/Token"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mirror" type="AnimatedSprite2D" parent="WallView"]
+position = Vector2(356, 389)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vtraq")
+animation = &"mirror"
+autoplay = "mirror"
+frame = 1
+frame_progress = 0.781398
+metadata/_edit_group_ = true
+
+[node name="ClickDetect" type="Control" parent="WallView/Mirror"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -34.0
+offset_top = -35.0
+offset_right = 34.0
+offset_bottom = 34.0
+
+[node name="Arcade" type="AnimatedSprite2D" parent="WallView"]
+position = Vector2(841, 169)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vtraq")
+animation = &"arcade"
+autoplay = "arcade"
+metadata/_edit_group_ = true
+
+[node name="ClickDetect" type="Control" parent="WallView/Arcade"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -30.0
+offset_top = -39.0
+offset_right = 31.0
+offset_bottom = 39.0
+
+[node name="MirrorEntry" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Mirror" type="AnimatedSprite2D" parent="MirrorEntry"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lqnso")
+autoplay = "default"
+frame_progress = 0.488612
+centered = false
+
+[node name="DoorClick" type="Control" parent="MirrorEntry/Mirror"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 194.0
+offset_top = 65.0
+offset_right = 287.0
+offset_bottom = 190.0

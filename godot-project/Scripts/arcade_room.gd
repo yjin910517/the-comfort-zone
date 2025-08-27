@@ -2,7 +2,7 @@ extends Node2D
 
 signal token_delivered(room_name)
 signal wake_up(wakeup_reason)
-signal completed_room(room_name)
+signal go_to_room(destination_name)
 
 
 var levels = {
@@ -119,5 +119,5 @@ func _on_continue_btn_pressed():
 func _on_door_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		print("proceed to next room")
-		emit_signal("completed_room", "arcade_room")
+		emit_signal("go_to_room", "locker_room")
 		hard_win.hide()

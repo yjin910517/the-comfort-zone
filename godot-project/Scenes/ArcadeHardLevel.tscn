@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ce250k6eayeyt" path="res://Arts/arcade/arcade_instructions.png" id="2_kqp1x"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="2_nr3le"]
 [ext_resource type="Texture2D" uid="uid://dwrivf76q7toy" path="res://Arts/arcade/arcade_character2.png" id="3_lxl3w"]
-[ext_resource type="Script" path="res://Scripts/token.gd" id="5_00bqc"]
+[ext_resource type="Script" path="res://Scripts/arcade_token.gd" id="5_00bqc"]
 [ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="5_lbaga"]
 [ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="6_3juyn"]
 [ext_resource type="Texture2D" uid="uid://b5a4jf7gq3stv" path="res://Arts/arcade/arcade_icons1.png" id="8_ljnqj"]
