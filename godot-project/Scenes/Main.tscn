@@ -1,10 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3f014t608a5p"]
+[gd_scene load_steps=13 format=3 uid="uid://d3f014t608a5p"]
 
 [ext_resource type="PackedScene" uid="uid://by0o23i3me25s" path="res://Scenes/SpawnRoom.tscn" id="1_dymxr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_pw2wb"]
 [ext_resource type="PackedScene" uid="uid://bi7f0fxw41sov" path="res://Scenes/CliffRoom.tscn" id="2_hjh60"]
 [ext_resource type="PackedScene" uid="uid://c8cu18ysse1ix" path="res://Scenes/PaintingRoom.tscn" id="3_jxguw"]
 [ext_resource type="PackedScene" uid="uid://boms4qbrf27st" path="res://Scenes/ArcadeRoom.tscn" id="4_mopra"]
+[ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="6_lkut4"]
+[ext_resource type="Script" path="res://Scripts/token_counter.gd" id="6_yxv43"]
+[ext_resource type="FontFile" uid="uid://bjt4mj3qatrcy" path="res://Fonts/comic-relief/ComicRelief.ttf" id="8_ywrof"]
+[ext_resource type="PackedScene" uid="uid://slk36o4w5gu3" path="res://Scenes/WakeUp.tscn" id="9_ky4d0"]
+
+[sub_resource type="Animation" id="Animation_fv8yn"]
+resource_name = "show_counter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TokenCounter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, -60), Vector2(10, 0), Vector2(10, 0), Vector2(10, -60)]
+}
+
+[sub_resource type="Animation" id="Animation_q4fys"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TokenCounter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, -60)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wt41u"]
+_data = {
+"RESET": SubResource("Animation_q4fys"),
+"show_counter": SubResource("Animation_fv8yn")
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_pw2wb")
@@ -22,3 +62,37 @@ room_name = "painting_room"
 room_name = "arcade_room"
 
 [node name="TokenCounter" type="Node2D" parent="."]
+position = Vector2(10, -60)
+script = ExtResource("6_yxv43")
+metadata/_edit_group_ = true
+
+[node name="BG" type="ColorRect" parent="TokenCounter"]
+offset_left = 38.0
+offset_right = 146.0
+offset_bottom = 60.0
+color = Color(0.478431, 0.211765, 0.482353, 0.784314)
+
+[node name="TokenIcon" type="Sprite2D" parent="TokenCounter"]
+position = Vector2(114, 34)
+scale = Vector2(2, 2)
+texture = ExtResource("6_lkut4")
+
+[node name="Label" type="Label" parent="TokenCounter"]
+offset_left = 38.0
+offset_top = 7.0
+offset_right = 88.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0.921569, 0.929412, 0.913725, 1)
+theme_override_fonts/font = ExtResource("8_ywrof")
+theme_override_font_sizes/font_size = 36
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TokenCounter"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_wt41u")
+}
+
+[node name="WakeUp" parent="." instance=ExtResource("9_ky4d0")]

@@ -4,6 +4,8 @@ extends Node2D
 @onready var cliff_room = $CliffRoom
 @onready var painting_room = $PaintingRoom
 @onready var arcade_room = $ArcadeRoom
+@onready var counter = $TokenCounter
+@onready var wakeup_scene = $WakeUp
 
 @onready var node_mapping = {
 	"spawn_room": spawn_room,
@@ -16,6 +18,8 @@ extends Node2D
 	"finale_room": 0
 }
 
+# token variables
+var token_count = 0
 var token_collection = {
 	"spawn_room": 0,
 	"cliff_room": 0,
@@ -26,13 +30,7 @@ var token_collection = {
 	"finale_room": 0
 }
 
-var token_count = 0
-
-var wakeup_notes = {
-	"easy": "file path",
-	"fall": "asset file path"
-}
-
+# wake up variables
 var has_woke_up = false
 
 
@@ -51,11 +49,14 @@ func _ready() -> void:
 	arcade_room.connect("token_delivered", Callable(self, "_on_token_delivered"))
 	arcade_room.connect("go_to_room", Callable(self, "_on_room_changed"))
 	arcade_room.connect("wake_up", Callable(self, "_on_wake_up"))
+	
+	wakeup_scene.connect("sleep_again", Callable(self, "_on_sleep_again"))
 
 	spawn_room.position = Vector2(0,0)
 	cliff_room.position = Vector2(0,0)
 	painting_room.position = Vector2(0,0)
 	arcade_room.position = Vector2(0,0)
+	wakeup_scene.position = Vector2(0,0)
 	
 	# test
 	spawn_room.show()
@@ -64,12 +65,14 @@ func _ready() -> void:
 	painting_room.hide()
 	arcade_room.hide()
 	
+	wakeup_scene.hide()
+	
 	
 func _on_token_delivered(room_name):
 	token_collection[room_name] += 1
 	token_count += 1
 	print("total count: ", token_count)
-	# to do: display total count in token counter node
+	counter.update_token_display(token_count)
 	
 	
 func _on_room_changed(destination):
@@ -84,12 +87,17 @@ func _on_wake_up(reason):
 		spawn_room.update_spawn_view()
 		
 	print("waking up by ", reason)
-	
-	# test
-	spawn_room.start_room()
-	spawn_room.show()
-
 	# to do: free black screen for 1 second 
 	# to do: sound effect
-	# to do: show token progress
-	# to do: show wakeup note
+	
+	var wakeup_data = {
+		"count": token_count,
+		"reason": reason
+	}
+	
+	wakeup_scene.show_wakeup_scene(wakeup_data)
+	
+
+func _on_sleep_again():
+	spawn_room.start_room()
+	spawn_room.show()

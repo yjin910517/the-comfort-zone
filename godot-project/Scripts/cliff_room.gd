@@ -103,6 +103,7 @@ func _on_yes_btn_pressed():
 	# if fail, reset the room and do nothing
 	if result_frame == 1:
 		emit_signal("wake_up", "fall")
+		flipping_view.hide()
 		hide()
 
 

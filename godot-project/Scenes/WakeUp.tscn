@@ -1,0 +1,227 @@
+[gd_scene load_steps=26 format=3 uid="uid://slk36o4w5gu3"]
+
+[ext_resource type="Script" path="res://Scripts/wake_up.gd" id="1_kmaf7"]
+[ext_resource type="Texture2D" uid="uid://dcv6dy6w0caa0" path="res://Arts/wakeup/wakeup_scenes7.png" id="2_622lp"]
+[ext_resource type="Texture2D" uid="uid://dcvysnxm5rlci" path="res://Arts/wakeup/wakeup_scenes8.png" id="3_6xalx"]
+[ext_resource type="Texture2D" uid="uid://crvcs6pps4uhi" path="res://Arts/wakeup/wakeup_scenes9.png" id="4_3byjw"]
+[ext_resource type="Texture2D" uid="uid://big3uxfgd5daj" path="res://Arts/wakeup/wakeup_scenes1.png" id="5_71gya"]
+[ext_resource type="Texture2D" uid="uid://bk62a3yjnx07j" path="res://Arts/wakeup/wakeup_scenes2.png" id="6_o14j8"]
+[ext_resource type="Texture2D" uid="uid://d4aop6xobqx4t" path="res://Arts/wakeup/wakeup_scenes3.png" id="7_xdlwv"]
+[ext_resource type="Texture2D" uid="uid://efau2bd1474q" path="res://Arts/wakeup/wakeup_scenes4.png" id="8_nk3wf"]
+[ext_resource type="Texture2D" uid="uid://bn6jd30y7fvbi" path="res://Arts/wakeup/wakeup_scenes5.png" id="9_3xfvx"]
+[ext_resource type="Texture2D" uid="uid://c8evob10ge1hb" path="res://Arts/wakeup/wakeup_scenes6.png" id="10_edr2m"]
+[ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="11_wqccg"]
+[ext_resource type="Texture2D" uid="uid://y8q8a52lw36k" path="res://Arts/memories/memory_token_small4.png" id="12_ue3oh"]
+[ext_resource type="Texture2D" uid="uid://d3b6xufubjayb" path="res://Arts/memories/memory_token_small3.png" id="13_lt2xr"]
+[ext_resource type="Texture2D" uid="uid://dflahffsftrmn" path="res://Arts/memories/memory_token_small5.png" id="14_ub3qg"]
+[ext_resource type="FontFile" uid="uid://bjt4mj3qatrcy" path="res://Fonts/comic-relief/ComicRelief.ttf" id="15_jowl7"]
+[ext_resource type="Texture2D" uid="uid://b383whmjykigu" path="res://Arts/wakeup/wakeup_note_icon.png" id="16_me8dv"]
+[ext_resource type="Texture2D" uid="uid://b8n6qrv6nry2e" path="res://Arts/wakeup/wakeup_sleep_btn1.png" id="17_8le6q"]
+[ext_resource type="Texture2D" uid="uid://cig3ctwi3w0iw" path="res://Arts/wakeup/wakeup_sleep_btn2.png" id="18_rhyy7"]
+[ext_resource type="Texture2D" uid="uid://coy2jy4je5qak" path="res://Arts/wakeup/wakeup_choice_btns1.png" id="19_ue3iy"]
+[ext_resource type="Texture2D" uid="uid://b8u2jgmfjaa0v" path="res://Arts/wakeup/wakeup_choice_btns2.png" id="20_jx4la"]
+[ext_resource type="Texture2D" uid="uid://cmg3imjy6qor6" path="res://Arts/wakeup/wakeup_complete_banner1.png" id="21_cygip"]
+[ext_resource type="Texture2D" uid="uid://ctrelbpjo4ogq" path="res://Arts/wakeup/wakeup_complete_banner2.png" id="22_rrrsk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmb0j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_622lp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6xalx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3byjw")
+}],
+"loop": true,
+"name": &"complete",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_71gya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o14j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xdlwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o14j8")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_nk3wf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3xfvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_edr2m")
+}],
+"loop": true,
+"name": &"special",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1isf3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wqccg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ue3oh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_lt2xr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ub3qg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_weuc4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_cygip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rrrsk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="WakeUp" type="Node2D"]
+script = ExtResource("1_kmaf7")
+
+[node name="WakeUpNormal" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="WakeUpNormal"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tmb0j")
+animation = &"normal"
+autoplay = "normal"
+centered = false
+
+[node name="Progress" type="Node2D" parent="WakeUpNormal"]
+position = Vector2(292, 196)
+metadata/_edit_group_ = true
+
+[node name="TokenIcon" type="AnimatedSprite2D" parent="WakeUpNormal/Progress"]
+position = Vector2(36, 34)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1isf3")
+frame_progress = 0.810394
+
+[node name="Label" type="Label" parent="WakeUpNormal/Progress"]
+offset_left = 76.0
+offset_top = 6.0
+offset_right = 375.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.921569, 0.929412, 0.913725, 1)
+theme_override_fonts/font = ExtResource("15_jowl7")
+theme_override_font_sizes/font_size = 40
+text = "5/8 Collected"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Notes" type="Node2D" parent="WakeUpNormal"]
+position = Vector2(178, 308)
+metadata/_edit_group_ = true
+
+[node name="NoteIcon" type="Sprite2D" parent="WakeUpNormal/Notes"]
+position = Vector2(30, 34)
+texture = ExtResource("16_me8dv")
+
+[node name="Label" type="Label" parent="WakeUpNormal/Notes"]
+offset_left = 76.0
+offset_top = 6.0
+offset_right = 633.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0.643137, 0.866667, 0.858824, 1)
+theme_override_fonts/font = ExtResource("15_jowl7")
+theme_override_font_sizes/font_size = 24
+text = "Blah blah blah, you will do better next time blah bbbbbbbbbbbbbbb"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SleepBtn" type="TextureButton" parent="WakeUpNormal"]
+offset_left = 345.0
+offset_top = 448.0
+offset_right = 475.0
+offset_bottom = 472.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("17_8le6q")
+texture_hover = ExtResource("18_rhyy7")
+
+[node name="WakeUpSpecial" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="WakeUpSpecial"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tmb0j")
+animation = &"special"
+autoplay = "special"
+centered = false
+
+[node name="Progress" type="Node2D" parent="WakeUpSpecial"]
+position = Vector2(294, 288)
+metadata/_edit_group_ = true
+
+[node name="TokenIcon" type="AnimatedSprite2D" parent="WakeUpSpecial/Progress"]
+position = Vector2(36, 34)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1isf3")
+frame_progress = 0.810394
+
+[node name="Label" type="Label" parent="WakeUpSpecial/Progress"]
+offset_left = 76.0
+offset_top = 6.0
+offset_right = 375.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.921569, 0.929412, 0.913725, 1)
+theme_override_fonts/font = ExtResource("15_jowl7")
+theme_override_font_sizes/font_size = 40
+text = "5/8 Collected"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SleepBtn" type="TextureButton" parent="WakeUpSpecial"]
+offset_left = 197.0
+offset_top = 426.0
+offset_right = 470.0
+offset_bottom = 450.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("19_ue3iy")
+texture_hover = ExtResource("20_jx4la")
+
+[node name="WakeUpComplete" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="WakeUpComplete"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tmb0j")
+animation = &"complete"
+autoplay = "complete"
+centered = false
+
+[node name="Banner" type="AnimatedSprite2D" parent="WakeUpComplete"]
+position = Vector2(470, 333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_weuc4")
+autoplay = "default"
