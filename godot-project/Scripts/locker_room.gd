@@ -32,35 +32,35 @@ var DoorScene = preload("res://Scenes/Door.tscn")
 
 var door_dataset = [
 	{
-		"texture": preload("res://Arts/door_room/door1.png"),
-		"outcome": "narrative_1"
-	},
-	{
-		"texture": preload("res://Arts/door_room/door2.png"),
+		"texture": preload("res://Arts/locker_room/locker_single_frames1.png"),
 		"outcome": "narrative_2"
 	},
 	{
-		"texture": preload("res://Arts/door_room/door3.png"),
+		"texture": preload("res://Arts/locker_room/locker_single_frames2.png"),
+		"outcome": "narrative_3"
+	},
+	{
+		"texture": preload("res://Arts/locker_room/locker_single_frames3.png"),
 		"outcome": "final_room"
 	},
 	{
-		"texture": preload("res://Arts/door_room/door4.png"),
-		"outcome": "button_room"
+		"texture": preload("res://Arts/locker_room/locker_single_frames4.png"),
+		"outcome": "narrative_1"
 	},
 	{
-		"texture": preload("res://Arts/door_room/door5.png"),
-		"outcome": "narrative_3"
+		"texture": preload("res://Arts/locker_room/locker_single_frames5.png"),
+		"outcome": "button_room"
 	}
 ]
 
 # use this for randomized door positions
 var pos_set = [
 	[
-		Vector2(40,168),
-		Vector2(236,63),
-		Vector2(450,208),
-		Vector2(602,63),
-		Vector2(773,178)
+		Vector2(46,140),
+		Vector2(236,90),
+		Vector2(400,208),
+		Vector2(580,120),
+		Vector2(760,170)
 	]
 ]
 
@@ -92,7 +92,7 @@ func _ready() -> void:
 		new_door.set_door_data(door_data)
 		
 		new_door.connect("door_opened", Callable(self, "_on_door_opened"))
-
+		
 	room1.position = Vector2(0,0)
 	room2.position = Vector2(0,0)
 	room3.position = Vector2(0,0)
