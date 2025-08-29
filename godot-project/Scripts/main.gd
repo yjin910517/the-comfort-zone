@@ -6,6 +6,7 @@ extends Node2D
 @onready var arcade_room = $ArcadeRoom
 @onready var door_room = $DoorRoom
 @onready var locker_room = $LockerRoom
+@onready var finale_room = $FinaleScene
 @onready var counter = $TokenCounter
 @onready var wakeup_scene = $WakeUp
 
@@ -16,8 +17,7 @@ extends Node2D
 	"arcade_room": arcade_room,
 	"door_room": door_room,
 	"locker_room": locker_room,
-	# test
-	"finale_room": 0
+	"finale_room": finale_room
 }
 
 # token variables
@@ -62,12 +62,17 @@ func _ready() -> void:
 	locker_room.connect("wake_up", Callable(self, "_on_wake_up"))
 	locker_room.connect("final_lock_check", Callable(self, "_on_final_lock_check"))
 	
+	finale_room.connect("token_delivered", Callable(self, "_on_token_delivered"))
+	
 	wakeup_scene.connect("sleep_again", Callable(self, "_on_sleep_again"))
 
 	spawn_room.position = Vector2(0,0)
 	cliff_room.position = Vector2(0,0)
 	painting_room.position = Vector2(0,0)
 	arcade_room.position = Vector2(0,0)
+	door_room.position = Vector2(0,0)
+	locker_room.position = Vector2(0,0)
+	finale_room.position = Vector2(0,0)
 	wakeup_scene.position = Vector2(0,0)
 	
 	# test
@@ -78,14 +83,21 @@ func _ready() -> void:
 	arcade_room.hide()
 	door_room.hide()
 	locker_room.hide()
-	
+	finale_room.hide()
 	wakeup_scene.hide()
 	
 	
 func _on_token_delivered(room_name):
 	token_collection[room_name] += 1
 	token_count += 1
-	counter.update_token_display(token_count)
+	
+	# skip GUD counter display for the finale collection
+	if room_name != "finale_room":
+		counter.update_token_display(token_count)
+	
+	# call wakeup by finale token
+	if room_name == "finale_room":
+		_on_wake_up("finale")
 	
 	
 func _on_room_changed(destination):
@@ -95,7 +107,8 @@ func _on_room_changed(destination):
 		# unlock both entries
 		door_room.get_node("FinalRoom").is_locked = false
 		locker_room.get_node("FinalRoom").is_locked = false
-		print("going to finale room")
+		# start the finale scene
+		new_room.start_finale_scene()
 		
 	new_room.show()
 

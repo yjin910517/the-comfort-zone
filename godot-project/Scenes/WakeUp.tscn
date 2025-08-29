@@ -225,3 +225,23 @@ position = Vector2(470, 333)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_weuc4")
 autoplay = "default"
+
+[node name="Label1" type="Label" parent="WakeUpComplete"]
+offset_left = 325.0
+offset_top = 454.0
+offset_right = 639.0
+offset_bottom = 494.0
+theme_override_colors/font_color = Color(0.921569, 0.929412, 0.913725, 1)
+theme_override_fonts/font = ExtResource("15_jowl7")
+theme_override_font_sizes/font_size = 28
+text = "Thank you for playing! "
+
+[node name="Label2" type="Label" parent="WakeUpComplete"]
+offset_left = 310.0
+offset_top = 497.0
+offset_right = 644.0
+offset_bottom = 537.0
+theme_override_colors/font_color = Color(0.45098, 0.745098, 0.827451, 1)
+theme_override_fonts/font = ExtResource("15_jowl7")
+theme_override_font_sizes/font_size = 28
+text = "A game by @birdnofoot"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3f014t608a5p"]
+[gd_scene load_steps=16 format=3 uid="uid://d3f014t608a5p"]
 
 [ext_resource type="PackedScene" uid="uid://by0o23i3me25s" path="res://Scenes/SpawnRoom.tscn" id="1_dymxr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_pw2wb"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bd0qxueq3hhv6" path="res://Scenes/DoorRoom.tscn" id="6_lsg2s"]
 [ext_resource type="Script" path="res://Scripts/token_counter.gd" id="6_yxv43"]
 [ext_resource type="PackedScene" uid="uid://drdl787fa04qg" path="res://Scenes/LockerRoom.tscn" id="7_k4sn7"]
+[ext_resource type="PackedScene" uid="uid://b61v2t4ng4aaq" path="res://Scenes/Finale.tscn" id="8_p80jr"]
 [ext_resource type="FontFile" uid="uid://bjt4mj3qatrcy" path="res://Fonts/comic-relief/ComicRelief.ttf" id="8_ywrof"]
 [ext_resource type="PackedScene" uid="uid://slk36o4w5gu3" path="res://Scenes/WakeUp.tscn" id="9_ky4d0"]
 
@@ -66,6 +67,8 @@ room_name = "arcade_room"
 [node name="DoorRoom" parent="." instance=ExtResource("6_lsg2s")]
 
 [node name="LockerRoom" parent="." instance=ExtResource("7_k4sn7")]
+
+[node name="FinaleScene" parent="." instance=ExtResource("8_p80jr")]
 
 [node name="TokenCounter" type="Node2D" parent="."]
 position = Vector2(10, -60)

@@ -1,8 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://do3hoaamcl58p"]
+[gd_scene load_steps=14 format=3 uid="uid://do3hoaamcl58p"]
 
 [ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="1_cqvo3"]
 [ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="2_485g5"]
+[ext_resource type="Texture2D" uid="uid://dflahffsftrmn" path="res://Arts/memories/memory_token_small5.png" id="3_fcmi5"]
 [ext_resource type="Script" path="res://Scripts/click_token.gd" id="3_vwha5"]
+[ext_resource type="Texture2D" uid="uid://dfhv5pk448541" path="res://Arts/memories/memory_token_small8.png" id="4_dvl51"]
+[ext_resource type="Texture2D" uid="uid://y8q8a52lw36k" path="res://Arts/memories/memory_token_small4.png" id="4_s67ng"]
+[ext_resource type="Texture2D" uid="uid://bn3e335ei0xau" path="res://Arts/memories/memory_token_small7.png" id="5_2o52c"]
+[ext_resource type="Texture2D" uid="uid://d3b6xufubjayb" path="res://Arts/memories/memory_token_small3.png" id="5_4ib8a"]
+[ext_resource type="Texture2D" uid="uid://d3xy1gcw0gp" path="res://Arts/memories/memory_token_small6.png" id="8_pbypb"]
+[ext_resource type="Texture2D" uid="uid://dcu3xrmplglgf" path="res://Arts/memories/memory_token_small9.png" id="9_i724k"]
+[ext_resource type="Texture2D" uid="uid://dssyca6ekf55l" path="res://Arts/memories/memory_token_small11.png" id="10_j0m43"]
+[ext_resource type="Texture2D" uid="uid://qbgwlqkv4rjb" path="res://Arts/memories/memory_token_small10.png" id="11_gpyvg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oxf1p"]
 animations = [{
@@ -16,6 +25,38 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fcmi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dvl51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2o52c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s67ng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4ib8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pbypb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_i724k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j0m43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gpyvg")
+}],
+"loop": true,
+"name": &"finale",
+"speed": 3.0
 }]
 
 [node name="Token" type="AnimatedSprite2D"]

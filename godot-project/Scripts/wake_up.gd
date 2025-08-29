@@ -36,13 +36,13 @@ func show_wakeup_scene(wakeup_data):
 	var wakeup_reason = wakeup_data["reason"]
 	
 	# show the normal wake up scene 
-	if wakeup_reason != "final" and token_count < TOTAL_TOKEN:
+	if wakeup_reason != "finale" and token_count < TOTAL_TOKEN:
 		normal_scene.get_node("Progress/Label").text = str(token_count) + "/" + str(TOTAL_TOKEN) + " Collected"
 		normal_scene.get_node("Notes/Label").text = wakeup_notes[wakeup_reason]
 		normal_scene.show()
 	
 	# show the special wake up scene when final room unlocked
-	elif wakeup_reason == "final" and token_count < TOTAL_TOKEN:
+	elif wakeup_reason == "finale" and token_count < TOTAL_TOKEN:
 		special_scene.get_node("Progress/Label").text = str(token_count) + "/" + str(TOTAL_TOKEN) + " Collected"
 		special_scene.show()
 	

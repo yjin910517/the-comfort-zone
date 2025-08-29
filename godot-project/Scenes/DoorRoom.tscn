@@ -457,7 +457,7 @@ metadata/_edit_group_ = true
 [node name="Background" type="AnimatedSprite2D" parent="FinalRoom"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sdtgd")
-animation = &"final_room_unlocked"
+animation = &"final_room_locked"
 centered = false
 
 [node name="LockIcon" type="AnimatedSprite2D" parent="FinalRoom"]
