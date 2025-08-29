@@ -1,9 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd0qxueq3hhv6"]
+[gd_scene load_steps=44 format=3 uid="uid://bd0qxueq3hhv6"]
 
 [ext_resource type="Script" path="res://Scripts/door_room.gd" id="1_jur16"]
 [ext_resource type="Texture2D" uid="uid://cinc1wf83ervb" path="res://Arts/door_room/door_room_bg1.png" id="1_udf8s"]
 [ext_resource type="Texture2D" uid="uid://cig8ksdxv72ns" path="res://Arts/door_room/door_room_bg2.png" id="2_0cxla"]
 [ext_resource type="Texture2D" uid="uid://bktbiqxf5hehp" path="res://Arts/door_room/door_room_bg3.png" id="3_a2acq"]
+[ext_resource type="Texture2D" uid="uid://de3fp5pvo8c1n" path="res://Arts/narrative_rooms/narrative_a1.png" id="5_01l1h"]
+[ext_resource type="Texture2D" uid="uid://dcqme125buf42" path="res://Arts/narrative_rooms/twilight_room1.png" id="5_tyo1g"]
+[ext_resource type="Texture2D" uid="uid://cdlltyvv1dv4o" path="res://Arts/narrative_rooms/twilight_room2.png" id="6_5d1oq"]
+[ext_resource type="Texture2D" uid="uid://cltkuv1hcwigu" path="res://Arts/narrative_rooms/narrative_a2.png" id="6_8dkvo"]
+[ext_resource type="Texture2D" uid="uid://bdk50b146llh5" path="res://Arts/narrative_rooms/narrative_a3.png" id="7_5ua0a"]
+[ext_resource type="Texture2D" uid="uid://benrbsyqphfct" path="res://Arts/narrative_rooms/twilight_room3.png" id="7_yjgxh"]
+[ext_resource type="Texture2D" uid="uid://46n58yh78y5o" path="res://Arts/narrative_rooms/final_room_locked1.png" id="8_bvag4"]
+[ext_resource type="PackedScene" uid="uid://do3hoaamcl58p" path="res://Scenes/Token.tscn" id="8_evmkc"]
+[ext_resource type="Texture2D" uid="uid://pbenk8mmwwi7" path="res://Arts/narrative_rooms/narrative_b1.png" id="8_putc0"]
+[ext_resource type="Texture2D" uid="uid://dkrgf2f4msvhg" path="res://Arts/directions/direction_sign_b1.png" id="9_f0wvo"]
+[ext_resource type="Texture2D" uid="uid://cro5ih23x5dc2" path="res://Arts/narrative_rooms/narrative_b2.png" id="9_hl40m"]
+[ext_resource type="Texture2D" uid="uid://c4pav5sst7gyx" path="res://Arts/narrative_rooms/final_room_locked2.png" id="9_mhtyp"]
+[ext_resource type="Texture2D" uid="uid://5jkf2jiklyhn" path="res://Arts/narrative_rooms/final_room_locked3.png" id="10_m5cfj"]
+[ext_resource type="Texture2D" uid="uid://das1wjq18aly6" path="res://Arts/directions/direction_sign_b2.png" id="10_r0vl0"]
+[ext_resource type="Texture2D" uid="uid://chrsem08mptsj" path="res://Arts/narrative_rooms/narrative_b3.png" id="10_vs5la"]
+[ext_resource type="Texture2D" uid="uid://plbvauo801ra" path="res://Arts/narrative_rooms/final_room_locked4.png" id="11_0ccpp"]
+[ext_resource type="Script" path="res://Scripts/navigation_narrative.gd" id="11_vme5a"]
+[ext_resource type="Texture2D" uid="uid://dirthex3am383" path="res://Arts/directions/direction_sign_b9.png" id="15_rynk6"]
+[ext_resource type="Texture2D" uid="uid://dxkh2y7ic647x" path="res://Arts/directions/direction_sign_b10.png" id="16_mdfq7"]
+[ext_resource type="Texture2D" uid="uid://cpo2qmt8ou3u" path="res://Arts/narrative_rooms/narrative_c1.png" id="17_1rcrm"]
+[ext_resource type="Texture2D" uid="uid://ba267myrk6dtu" path="res://Arts/narrative_rooms/narrative_c_text1.png" id="18_nrhql"]
+[ext_resource type="Texture2D" uid="uid://g4fp6qf8frsq" path="res://Arts/narrative_rooms/narrative_c_text2.png" id="19_d1b3u"]
+[ext_resource type="Script" path="res://Scripts/painting_decor.gd" id="20_tir4v"]
+[ext_resource type="Texture2D" uid="uid://ri2dr67mcs4h" path="res://Arts/narrative_rooms/twilight_buttons1.png" id="24_iyplr"]
+[ext_resource type="Texture2D" uid="uid://dgo2o48itooq2" path="res://Arts/narrative_rooms/twilight_buttons2.png" id="25_wvmbo"]
+[ext_resource type="Texture2D" uid="uid://ds2igegiee3ul" path="res://Arts/narrative_rooms/twilight_buttons3.png" id="26_jlfvh"]
+[ext_resource type="Texture2D" uid="uid://cwvrl8l7vwqkj" path="res://Arts/narrative_rooms/twilight_buttons4.png" id="27_hojmq"]
+[ext_resource type="Texture2D" uid="uid://ci44c31yypex2" path="res://Arts/directions/direction_sign_b7.png" id="32_6i8fs"]
+[ext_resource type="Texture2D" uid="uid://cntxvf7cqxvlh" path="res://Arts/narrative_rooms/final_room_lock_icon1.png" id="32_offg5"]
+[ext_resource type="Texture2D" uid="uid://2vmcuax3y7uj" path="res://Arts/directions/direction_sign_b6.png" id="33_7fky0"]
+[ext_resource type="Texture2D" uid="uid://ck8stysqcmg03" path="res://Arts/narrative_rooms/final_room_lock_icon2.png" id="33_l1y83"]
+[ext_resource type="Texture2D" uid="uid://btdj46j368265" path="res://Arts/narrative_rooms/final_room_lock_icon3.png" id="34_piaij"]
+[ext_resource type="Texture2D" uid="uid://d3wp7y6n3gf6g" path="res://Arts/narrative_rooms/final_room_lock_icon4.png" id="35_p1wgy"]
+[ext_resource type="Texture2D" uid="uid://ciuxlh1pt7c3r" path="res://Arts/directions/direction_sign_b3.png" id="38_8444w"]
+[ext_resource type="Script" path="res://Scripts/navigation.gd" id="39_s53sr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldff3"]
 animations = [{
@@ -22,6 +57,123 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppps2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tyo1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5d1oq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yjgxh")
+}],
+"loop": true,
+"name": &"button_room",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bvag4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mhtyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m5cfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mhtyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0ccpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bvag4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mhtyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m5cfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mhtyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0ccpp")
+}],
+"loop": false,
+"name": &"final_room_locked",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_01l1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8dkvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5ua0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8dkvo")
+}],
+"loop": true,
+"name": &"rm1",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_putc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hl40m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vs5la")
+}],
+"loop": true,
+"name": &"rm2",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n5txq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_nrhql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_d1b3u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xk28f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_offg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_l1y83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_piaij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_p1wgy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [node name="DoorRoom" type="Node2D"]
 script = ExtResource("1_jur16")
 
@@ -31,3 +183,165 @@ sprite_frames = SubResource("SpriteFrames_ldff3")
 autoplay = "default"
 frame_progress = 0.478113
 centered = false
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Room1" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="Room1"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ppps2")
+animation = &"rm1"
+autoplay = "rm1"
+frame_progress = 0.905148
+centered = false
+
+[node name="Token" parent="Room1" instance=ExtResource("8_evmkc")]
+position = Vector2(870, 448)
+scale = Vector2(4, 4)
+
+[node name="NavBack" type="TextureButton" parent="Room1"]
+offset_left = 23.0
+offset_top = 469.0
+offset_right = 62.0
+offset_bottom = 493.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("9_f0wvo")
+texture_hover = ExtResource("10_r0vl0")
+script = ExtResource("11_vme5a")
+
+[node name="Room2" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="Room2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ppps2")
+animation = &"rm2"
+autoplay = "rm2"
+centered = false
+
+[node name="Token" parent="Room2" instance=ExtResource("8_evmkc")]
+position = Vector2(484, 479)
+scale = Vector2(2, 2)
+
+[node name="NavBack" type="TextureButton" parent="Room2"]
+offset_left = 23.0
+offset_top = 469.0
+offset_right = 62.0
+offset_bottom = 493.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("15_rynk6")
+texture_hover = ExtResource("16_mdfq7")
+script = ExtResource("11_vme5a")
+
+[node name="Room3" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="BG" type="TextureRect" parent="Room3"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture = ExtResource("17_1rcrm")
+
+[node name="Text" type="AnimatedSprite2D" parent="Room3"]
+position = Vector2(453, 277)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_n5txq")
+script = ExtResource("20_tir4v")
+metadata/_edit_group_ = true
+
+[node name="ClickDetect" type="Control" parent="Room3/Text"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -36.0
+offset_top = -46.0
+offset_right = 37.0
+offset_bottom = 46.0
+
+[node name="NavBack" type="TextureButton" parent="Room3"]
+offset_left = 23.0
+offset_top = 469.0
+offset_right = 62.0
+offset_bottom = 493.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("15_rynk6")
+texture_hover = ExtResource("16_mdfq7")
+script = ExtResource("11_vme5a")
+
+[node name="ButtonRoom" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="ButtonRoom"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ppps2")
+animation = &"button_room"
+autoplay = "button_room"
+frame = 1
+frame_progress = 0.928796
+centered = false
+
+[node name="NavStay" type="TextureButton" parent="ButtonRoom"]
+offset_left = 180.0
+offset_top = 279.0
+offset_right = 291.0
+offset_bottom = 329.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("24_iyplr")
+texture_hover = ExtResource("25_wvmbo")
+
+[node name="NavWake" type="TextureButton" parent="ButtonRoom"]
+offset_left = 550.0
+offset_top = 279.0
+offset_right = 661.0
+offset_bottom = 329.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("26_jlfvh")
+texture_hover = ExtResource("27_hojmq")
+
+[node name="FinalRoom" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="FinalRoom"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ppps2")
+animation = &"final_room_locked"
+centered = false
+
+[node name="LockIcon" type="AnimatedSprite2D" parent="FinalRoom"]
+position = Vector2(313, 192)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_xk28f")
+autoplay = "default"
+frame = 2
+frame_progress = 0.854947
+centered = false
+
+[node name="ClickDetect" type="Control" parent="FinalRoom/LockIcon"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -19.0
+offset_top = -7.0
+offset_right = 187.0
+offset_bottom = 86.0
+
+[node name="NavBack" type="TextureButton" parent="FinalRoom"]
+offset_left = 23.0
+offset_top = 469.0
+offset_right = 62.0
+offset_bottom = 493.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("32_6i8fs")
+texture_hover = ExtResource("33_7fky0")
+script = ExtResource("11_vme5a")
+
+[node name="Nav" type="TextureButton" parent="."]
+offset_left = 25.0
+offset_top = 474.0
+offset_right = 70.0
+offset_bottom = 498.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("38_8444w")
+texture_hover = ExtResource("10_r0vl0")
+script = ExtResource("39_s53sr")
+destination = "painting_room"

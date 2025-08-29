@@ -13,7 +13,6 @@ var _collected = false
 func _ready() -> void:
 	
 	click_control.connect("gui_input", Callable(self, "_on_token_gui_input"))
-	# to do: add token to group "tokens" for easy connection to main
 
 
 func _on_token_gui_input(event):

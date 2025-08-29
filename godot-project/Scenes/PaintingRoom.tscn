@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c8cu18ysse1ix"]
+[gd_scene load_steps=30 format=3 uid="uid://c8cu18ysse1ix"]
 
 [ext_resource type="Script" path="res://Scripts/painting_room.gd" id="1_ihgdt"]
 [ext_resource type="Texture2D" uid="uid://bf7wg4vvukkpy" path="res://Arts/painting/painting1-1.png" id="1_l0jtd"]
@@ -19,9 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dh46h45hmyqm1" path="res://Arts/painting/painting5-2.png" id="16_xay04"]
 [ext_resource type="Texture2D" uid="uid://ciamswwmflb5j" path="res://Arts/painting/painting6_memory1.png" id="17_n12bb"]
 [ext_resource type="Texture2D" uid="uid://dbyy0kg5eeelr" path="res://Arts/painting/painting6_memory2.png" id="18_perrm"]
-[ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="21_uni85"]
-[ext_resource type="Script" path="res://Scripts/click_token.gd" id="22_1ur3c"]
-[ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="22_ypti4"]
+[ext_resource type="PackedScene" uid="uid://do3hoaamcl58p" path="res://Scenes/Token.tscn" id="20_innw4"]
 [ext_resource type="Texture2D" uid="uid://ciuxlh1pt7c3r" path="res://Arts/directions/direction_sign_b3.png" id="23_fa0oj"]
 [ext_resource type="Texture2D" uid="uid://ccalf6h68yx35" path="res://Arts/painting/paint_room_mirror_view1.png" id="23_x4237"]
 [ext_resource type="Texture2D" uid="uid://cs000ldfk0dwy" path="res://Arts/painting/paint_room_mirror_view2.png" id="24_1avja"]
@@ -134,20 +132,6 @@ animations = [{
 "loop": true,
 "name": &"wave",
 "speed": 1.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_oxf1p"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("21_uni85")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_ypti4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lqnso"]
@@ -270,25 +254,8 @@ autoplay = "wave"
 frame_progress = 0.778237
 metadata/_edit_group_ = true
 
-[node name="Token" type="AnimatedSprite2D" parent="WallView/Wave"]
-position = Vector2(33, -24)
-sprite_frames = SubResource("SpriteFrames_oxf1p")
-autoplay = "default"
-script = ExtResource("22_1ur3c")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WallView/Wave/Token"]
-
-[node name="ClickControl" type="Control" parent="WallView/Wave/Token"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -8.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Token" parent="WallView/Wave" instance=ExtResource("20_innw4")]
+position = Vector2(10, -10)
 
 [node name="Mirror" type="AnimatedSprite2D" parent="WallView"]
 position = Vector2(356, 389)
@@ -336,7 +303,7 @@ script = ExtResource("25_6y754")
 destination = "spawn_room"
 
 [node name="MirrorEntry" type="Node2D" parent="."]
-position = Vector2(63, 43)
+position = Vector2(108, 81)
 metadata/_edit_group_ = true
 
 [node name="Mirror" type="AnimatedSprite2D" parent="MirrorEntry"]

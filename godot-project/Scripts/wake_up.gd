@@ -15,7 +15,7 @@ const TOTAL_TOKEN = 8
 var wakeup_notes = {
 	"easy": "Difficult roads lead to beautiful destinations (Easy ones wake you up)",
 	"fall": "Never Lose Faith. Try it again (and again).",
-	"door": "xxxxxx"
+	"twilight": "Waking up is a way out when I am lost (I will come back)."
 }
 
 
@@ -36,18 +36,18 @@ func show_wakeup_scene(wakeup_data):
 	var wakeup_reason = wakeup_data["reason"]
 	
 	# show the normal wake up scene 
-	if wakeup_reason != "final":
+	if wakeup_reason != "final" and token_count < TOTAL_TOKEN:
 		normal_scene.get_node("Progress/Label").text = str(token_count) + "/" + str(TOTAL_TOKEN) + " Collected"
 		normal_scene.get_node("Notes/Label").text = wakeup_notes[wakeup_reason]
 		normal_scene.show()
 	
 	# show the special wake up scene when final room unlocked
-	elif token_count < TOTAL_TOKEN:
+	elif wakeup_reason == "final" and token_count < TOTAL_TOKEN:
 		special_scene.get_node("Progress/Label").text = str(token_count) + "/" + str(TOTAL_TOKEN) + " Collected"
 		special_scene.show()
 	
 	# show the 100% achievement end scene
-	else:
+	elif token_count == TOTAL_TOKEN:
 		complete_scene.show()
 	
 	show()

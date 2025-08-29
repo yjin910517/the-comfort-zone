@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://by0o23i3me25s"]
+[gd_scene load_steps=17 format=3 uid="uid://by0o23i3me25s"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_room.gd" id="1_gy4y7"]
 [ext_resource type="Texture2D" uid="uid://wkad05jc8ukb" path="res://Arts/spawn/corridor1.png" id="2_6v63r"]
@@ -11,12 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://clkp7nsvbx04k" path="res://Arts/spawn/tutorial_room1.png" id="7_da234"]
 [ext_resource type="Texture2D" uid="uid://clfa4wx3g1bip" path="res://Arts/spawn/tutorial_room2.png" id="8_gojvn"]
 [ext_resource type="Script" path="res://Scripts/navigation_in_room.gd" id="11_vpbg2"]
-[ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="12_nipym"]
 [ext_resource type="Texture2D" uid="uid://2qilftnm7y1r" path="res://Arts/directions/direction_sign_a3.png" id="12_pq630"]
 [ext_resource type="Texture2D" uid="uid://d2xtivpf6a11u" path="res://Arts/directions/direction_sign_a6.png" id="13_b2t44"]
-[ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="13_pi6y5"]
 [ext_resource type="Texture2D" uid="uid://csa5v7xfkuw1d" path="res://Arts/directions/direction_sign_a4.png" id="13_xhcgn"]
-[ext_resource type="Script" path="res://Scripts/click_token.gd" id="14_svb5r"]
+[ext_resource type="PackedScene" uid="uid://do3hoaamcl58p" path="res://Scenes/Token.tscn" id="14_mhrhf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_umtbs"]
 animations = [{
@@ -57,20 +55,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_voy2b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_nipym")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_pi6y5")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
-}]
-
 [node name="SpawnRoom" type="Node2D"]
 script = ExtResource("1_gy4y7")
 
@@ -97,7 +81,6 @@ destination = "tutorial"
 
 [node name="TutorialView" type="Node2D" parent="."]
 position = Vector2(37, -45)
-metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="TutorialView"]
 scale = Vector2(2, 2)
@@ -128,30 +111,12 @@ script = ExtResource("11_vpbg2")
 location = "tutorial"
 destination = "corridor"
 
-[node name="Token" type="AnimatedSprite2D" parent="TutorialView"]
+[node name="Token" parent="TutorialView" instance=ExtResource("14_mhrhf")]
 position = Vector2(444, 196)
 scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_voy2b")
-autoplay = "default"
-script = ExtResource("14_svb5r")
-metadata/_edit_group_ = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TutorialView/Token"]
-
-[node name="ClickControl" type="Control" parent="TutorialView/Token"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -8.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Corridor" type="Node2D" parent="."]
-position = Vector2(118, -104)
+position = Vector2(110, -120)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="Corridor"]

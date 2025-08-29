@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://do3hoaamcl58p"]
+
+[ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="1_cqvo3"]
+[ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="2_485g5"]
+[ext_resource type="Script" path="res://Scripts/click_token.gd" id="3_vwha5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oxf1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cqvo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_485g5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Token" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_oxf1p")
+autoplay = "default"
+script = ExtResource("3_vwha5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ClickControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -10,21 +10,6 @@
 [ext_resource type="FontFile" uid="uid://bjt4mj3qatrcy" path="res://Fonts/comic-relief/ComicRelief.ttf" id="8_ywrof"]
 [ext_resource type="PackedScene" uid="uid://slk36o4w5gu3" path="res://Scenes/WakeUp.tscn" id="9_ky4d0"]
 
-[sub_resource type="Animation" id="Animation_fv8yn"]
-resource_name = "show_counter"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TokenCounter:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(10, -60), Vector2(10, 0), Vector2(10, 0), Vector2(10, -60)]
-}
-
 [sub_resource type="Animation" id="Animation_q4fys"]
 length = 0.001
 tracks/0/type = "value"
@@ -38,6 +23,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(10, -60)]
+}
+
+[sub_resource type="Animation" id="Animation_fv8yn"]
+resource_name = "show_counter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TokenCounter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, -60), Vector2(10, 0), Vector2(10, 0), Vector2(10, -60)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wt41u"]
