@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bd0qxueq3hhv6"]
+[gd_scene load_steps=55 format=3 uid="uid://bd0qxueq3hhv6"]
 
 [ext_resource type="Script" path="res://Scripts/door_room.gd" id="1_jur16"]
 [ext_resource type="Texture2D" uid="uid://cinc1wf83ervb" path="res://Arts/door_room/door_room_bg1.png" id="1_udf8s"]
@@ -36,9 +36,19 @@
 [ext_resource type="Texture2D" uid="uid://2vmcuax3y7uj" path="res://Arts/directions/direction_sign_b6.png" id="33_7fky0"]
 [ext_resource type="Texture2D" uid="uid://ck8stysqcmg03" path="res://Arts/narrative_rooms/final_room_lock_icon2.png" id="33_l1y83"]
 [ext_resource type="Texture2D" uid="uid://btdj46j368265" path="res://Arts/narrative_rooms/final_room_lock_icon3.png" id="34_piaij"]
+[ext_resource type="Script" path="res://Scripts/final_lock_room.gd" id="34_vg4es"]
 [ext_resource type="Texture2D" uid="uid://d3wp7y6n3gf6g" path="res://Arts/narrative_rooms/final_room_lock_icon4.png" id="35_p1wgy"]
+[ext_resource type="Texture2D" uid="uid://cx1p2vm4ig6ml" path="res://Arts/narrative_rooms/final_room_unlocked.png" id="35_ti5td"]
 [ext_resource type="Texture2D" uid="uid://ciuxlh1pt7c3r" path="res://Arts/directions/direction_sign_b3.png" id="38_8444w"]
 [ext_resource type="Script" path="res://Scripts/navigation.gd" id="39_s53sr"]
+[ext_resource type="Texture2D" uid="uid://cyrsqqbl56v8f" path="res://Arts/narrative_rooms/final_room_lock_anime4.png" id="40_6aqhx"]
+[ext_resource type="Texture2D" uid="uid://c0i4ntr3s4i50" path="res://Arts/narrative_rooms/final_room_lock_anime5.png" id="41_booyq"]
+[ext_resource type="Texture2D" uid="uid://ck3ce8827s37j" path="res://Arts/narrative_rooms/final_room_lock_anime6.png" id="42_he32i"]
+[ext_resource type="Texture2D" uid="uid://d1emq8fgfdc3" path="res://Arts/narrative_rooms/final_room_lock_anime1.png" id="43_3rx3p"]
+[ext_resource type="Texture2D" uid="uid://bd8wlyg6xu8hu" path="res://Arts/narrative_rooms/final_room_unlock_anime1.png" id="44_66xp3"]
+[ext_resource type="Texture2D" uid="uid://bg6fgbqe5dy7l" path="res://Arts/narrative_rooms/final_room_unlock_anime2.png" id="45_wall0"]
+[ext_resource type="Texture2D" uid="uid://re1diroeirq6" path="res://Arts/narrative_rooms/final_room_unlock_anime3.png" id="46_gatcs"]
+[ext_resource type="Texture2D" uid="uid://dbkndwrx0ar1b" path="res://Arts/narrative_rooms/final_room_unlock_anime4.png" id="47_swxnn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldff3"]
 animations = [{
@@ -154,7 +164,98 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xk28f"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdtgd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tyo1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5d1oq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yjgxh")
+}],
+"loop": true,
+"name": &"button_room",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bvag4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mhtyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m5cfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mhtyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0ccpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bvag4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mhtyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m5cfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mhtyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0ccpp")
+}],
+"loop": false,
+"name": &"final_room_locked",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_ti5td")
+}],
+"loop": false,
+"name": &"final_room_unlocked",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_01l1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8dkvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5ua0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8dkvo")
+}],
+"loop": true,
+"name": &"rm1",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_putc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hl40m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vs5la")
+}],
+"loop": true,
+"name": &"rm2",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vljfd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -172,6 +273,40 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_6aqhx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_booyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_he32i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_3rx3p")
+}],
+"loop": true,
+"name": &"unlock_fail",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_66xp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_wall0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_gatcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_swxnn")
+}],
+"loop": false,
+"name": &"unlock_success",
+"speed": 4.0
 }]
 
 [node name="DoorRoom" type="Node2D"]
@@ -315,22 +450,22 @@ texture_normal = ExtResource("26_jlfvh")
 texture_hover = ExtResource("27_hojmq")
 
 [node name="FinalRoom" type="Node2D" parent="."]
-position = Vector2(308, 138)
+position = Vector2(278, 247)
+script = ExtResource("34_vg4es")
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="FinalRoom"]
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_ppps2")
-animation = &"final_room_locked"
+sprite_frames = SubResource("SpriteFrames_sdtgd")
+animation = &"final_room_unlocked"
 centered = false
 
 [node name="LockIcon" type="AnimatedSprite2D" parent="FinalRoom"]
 position = Vector2(313, 192)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_xk28f")
+sprite_frames = SubResource("SpriteFrames_vljfd")
+animation = &"unlock_fail"
 autoplay = "default"
-frame = 2
-frame_progress = 0.854947
 centered = false
 
 [node name="ClickDetect" type="Control" parent="FinalRoom/LockIcon"]

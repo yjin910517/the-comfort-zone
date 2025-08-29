@@ -90,6 +90,13 @@ func _on_token_delivered(room_name):
 	
 func _on_room_changed(destination):
 	var new_room = node_mapping[destination]
+	
+	if destination == "finale_room":
+		# unlock both entries
+		door_room.get_node("FinalRoom").is_locked = false
+		locker_room.get_node("FinalRoom").is_locked = false
+		print("going to finale room")
+		
 	new_room.show()
 
 

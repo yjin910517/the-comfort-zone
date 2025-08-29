@@ -16,9 +16,6 @@ signal final_lock_check(room_node)
 @onready var stay_btn = $ButtonRoom/NavStay
 @onready var wake_btn = $ButtonRoom/NavWake
 @onready var final_room = $FinalRoom
-@onready var final_tunnel = $FinalRoom/Background
-@onready var final_lock = $FinalRoom/LockIcon
-@onready var lock_click = $FinalRoom/LockIcon/ClickDetect
 
 @onready var outcome_mapping = {
 	"narrative_1": room1,
@@ -66,10 +63,6 @@ var pos_set = [
 
 var chosen_pos_set = 0
 
-var is_locked = true
-
-const LOCK_COST = 6
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -81,7 +74,8 @@ func _ready() -> void:
 	stay_btn.connect("pressed", Callable(self, "_on_stay_pressed"))
 	wake_btn.connect("pressed", Callable(self, "_on_wake_pressed"))
 	
-	lock_click.connect("gui_input", Callable(self, "_on_lock_gui_input"))
+	final_room.connect("lock_request", Callable(self, "_on_lock_request"))
+	final_room.connect("unlocked", Callable(self, "_on_unlocked"))
 	
 	# initiate doors
 	var new_pos = pos_set[chosen_pos_set]
@@ -115,13 +109,12 @@ func _on_room_nav():
 	
 func _on_door_opened(outcome):
 	
-	outcome_mapping[outcome].show()
+	var new_room = outcome_mapping[outcome]
+	new_room.show()
 	
-	if outcome == "final_room" and is_locked:
-		final_lock.hide()
-		final_tunnel.play("final_room_locked")
-		await get_tree().create_timer(1).timeout
-		final_lock.show()
+	# set up the lock display 
+	if outcome == "final_room":
+		new_room.start_room()
 
 
 func _on_token_collected(token_node):
@@ -137,31 +130,15 @@ func _on_wake_pressed():
 	emit_signal("wake_up", "twilight")
 	hide()
 
-
-func _on_lock_gui_input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		emit_signal("final_lock_check", self)
-
+	
+func _on_lock_request():
+	emit_signal("final_lock_check", self)
+		
 
 func attempt_to_unlock(token_count):
-	if token_count >= LOCK_COST:
-		is_locked = false
-		print("final room unlocked")
-		# hide nav back arrow
-		# play unlock anime
-		# freeze click action
-		# await timer for anime play
-		# unfreeze click action
-		# send go to room signal to main
-		# change room content to static
-		# resume hidden nav arrow
-		# final_room.hide()
-		# hide()
-	else:
-		print("not enough token")
-		# hide nav back arrow
-		# freeze click action
-		# play lock anime
-		# await timer for anime play
-		# unfreeze click action
-		# resume hidden nav arrow
+	final_room.lock_check(token_count)
+		
+
+func _on_unlocked():
+	emit_signal("go_to_room", "finale_room")
+	hide()

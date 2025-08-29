@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://drdl787fa04qg"]
+[gd_scene load_steps=73 format=3 uid="uid://drdl787fa04qg"]
 
 [ext_resource type="Texture2D" uid="uid://dau7fkv3e2y4y" path="res://Arts/locker_room/locker_room_bg.png" id="1_1akbl"]
 [ext_resource type="Script" path="res://Scripts/locker_room.gd" id="1_7v2be"]
@@ -41,11 +41,21 @@
 [ext_resource type="Texture2D" uid="uid://cntxvf7cqxvlh" path="res://Arts/narrative_rooms/final_room_lock_icon1.png" id="29_n1k2y"]
 [ext_resource type="Texture2D" uid="uid://ck8stysqcmg03" path="res://Arts/narrative_rooms/final_room_lock_icon2.png" id="30_gmywl"]
 [ext_resource type="Texture2D" uid="uid://btdj46j368265" path="res://Arts/narrative_rooms/final_room_lock_icon3.png" id="31_0elt7"]
+[ext_resource type="Texture2D" uid="uid://cx1p2vm4ig6ml" path="res://Arts/narrative_rooms/final_room_unlocked.png" id="31_8nsyn"]
 [ext_resource type="Texture2D" uid="uid://d3wp7y6n3gf6g" path="res://Arts/narrative_rooms/final_room_lock_icon4.png" id="32_hcajg"]
 [ext_resource type="Texture2D" uid="uid://ci44c31yypex2" path="res://Arts/directions/direction_sign_b7.png" id="33_12efi"]
 [ext_resource type="Texture2D" uid="uid://2vmcuax3y7uj" path="res://Arts/directions/direction_sign_b6.png" id="34_twsbi"]
 [ext_resource type="Texture2D" uid="uid://ciuxlh1pt7c3r" path="res://Arts/directions/direction_sign_b3.png" id="35_76eed"]
 [ext_resource type="Script" path="res://Scripts/navigation.gd" id="36_2jtto"]
+[ext_resource type="Script" path="res://Scripts/final_lock_room.gd" id="41_rvtpu"]
+[ext_resource type="Texture2D" uid="uid://d1emq8fgfdc3" path="res://Arts/narrative_rooms/final_room_lock_anime1.png" id="46_nsel0"]
+[ext_resource type="Texture2D" uid="uid://cyrsqqbl56v8f" path="res://Arts/narrative_rooms/final_room_lock_anime4.png" id="49_rcwu5"]
+[ext_resource type="Texture2D" uid="uid://c0i4ntr3s4i50" path="res://Arts/narrative_rooms/final_room_lock_anime5.png" id="50_dnxqg"]
+[ext_resource type="Texture2D" uid="uid://ck3ce8827s37j" path="res://Arts/narrative_rooms/final_room_lock_anime6.png" id="51_r12yb"]
+[ext_resource type="Texture2D" uid="uid://bd8wlyg6xu8hu" path="res://Arts/narrative_rooms/final_room_unlock_anime1.png" id="52_j72rs"]
+[ext_resource type="Texture2D" uid="uid://bg6fgbqe5dy7l" path="res://Arts/narrative_rooms/final_room_unlock_anime2.png" id="53_sd0ys"]
+[ext_resource type="Texture2D" uid="uid://re1diroeirq6" path="res://Arts/narrative_rooms/final_room_unlock_anime3.png" id="54_lhwly"]
+[ext_resource type="Texture2D" uid="uid://dbkndwrx0ar1b" path="res://Arts/narrative_rooms/final_room_unlock_anime4.png" id="55_12dmi"]
 
 [sub_resource type="Animation" id="Animation_uftf0"]
 length = 0.001
@@ -285,6 +295,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("31_8nsyn")
+}],
+"loop": false,
+"name": &"final_room_unlocked",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("9_enf25")
 }, {
 "duration": 1.0,
@@ -333,6 +351,40 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49_rcwu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_dnxqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_r12yb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_nsel0")
+}],
+"loop": true,
+"name": &"unlock_fail",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_j72rs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_sd0ys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_lhwly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_12dmi")
+}],
+"loop": false,
+"name": &"unlock_success",
+"speed": 4.0
 }]
 
 [node name="LockerRoom" type="Node2D"]
@@ -534,18 +586,20 @@ texture_hover = ExtResource("28_h71v3")
 
 [node name="FinalRoom" type="Node2D" parent="."]
 position = Vector2(278, 247)
+script = ExtResource("41_rvtpu")
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="FinalRoom"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_6vkea")
-animation = &"final_room_locked"
+animation = &"final_room_unlocked"
 centered = false
 
 [node name="LockIcon" type="AnimatedSprite2D" parent="FinalRoom"]
 position = Vector2(313, 192)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_j4wog")
+animation = &"unlock_fail"
 autoplay = "default"
 centered = false
 
