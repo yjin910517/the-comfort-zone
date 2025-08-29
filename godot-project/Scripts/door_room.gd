@@ -3,7 +3,7 @@ extends Node2D
 signal token_delivered(room_name)
 signal wake_up(wakeup_reason)
 signal go_to_room(destination_name)
-signal final_lock_check()
+signal final_lock_check(room_node)
 
 @onready var room_nav = $Nav
 @onready var doors = $Doors
@@ -67,6 +67,8 @@ var pos_set = [
 var chosen_pos_set = 0
 
 var is_locked = true
+
+const LOCK_COST = 6
 
 
 # Called when the node enters the scene tree for the first time.
@@ -138,7 +140,28 @@ func _on_wake_pressed():
 
 func _on_lock_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		emit_signal("final_lock_check")
-		print("lock check")
-# to do: add function to receive token count from main and display unlock anime
-# tag has_unlocked = true and switch to a static scene for resleep
+		emit_signal("final_lock_check", self)
+
+
+func attempt_to_unlock(token_count):
+	if token_count >= LOCK_COST:
+		is_locked = false
+		print("final room unlocked")
+		# hide nav back arrow
+		# play unlock anime
+		# freeze click action
+		# await timer for anime play
+		# unfreeze click action
+		# send go to room signal to main
+		# change room content to static
+		# resume hidden nav arrow
+		# final_room.hide()
+		# hide()
+	else:
+		print("not enough token")
+		# hide nav back arrow
+		# freeze click action
+		# play lock anime
+		# await timer for anime play
+		# unfreeze click action
+		# resume hidden nav arrow

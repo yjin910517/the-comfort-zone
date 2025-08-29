@@ -3,14 +3,14 @@ extends Node2D
 signal token_delivered(room_name)
 signal wake_up(wakeup_reason)
 signal go_to_room(destination_name)
-signal final_lock_check()
+signal final_lock_check(room_node)
 
 @onready var room_nav = $Nav
 @onready var doors = $Doors
 @onready var room1 = $Room1
 @onready var token1 = $Room1/Token
 @onready var room2 = $Room2
-@onready var token2 = $Room2/Token
+@onready var token2 = $Room2/Letter/Token
 @onready var room3 = $Room3
 @onready var button_room = $ButtonRoom
 @onready var stay_btn = $ButtonRoom/NavStay
@@ -68,6 +68,8 @@ var chosen_pos_set = 0
 
 var is_locked = true
 
+const LOCK_COST = 6
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -113,7 +115,12 @@ func _on_room_nav():
 	
 func _on_door_opened(outcome):
 	
-	outcome_mapping[outcome].show()
+	var new_room = outcome_mapping[outcome]
+	new_room.show()
+	
+	# start the cloud animation
+	if outcome == "narrative_1":
+		new_room.start_room()
 	
 	if outcome == "final_room" and is_locked:
 		final_lock.hide()
@@ -138,7 +145,29 @@ func _on_wake_pressed():
 
 func _on_lock_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		emit_signal("final_lock_check")
-		print("lock check")
-# to do: add function to receive token count from main and display unlock anime
-# tag has_unlocked = true and switch to a static scene for resleep
+		emit_signal("final_lock_check", self)
+		
+
+func attempt_to_unlock(token_count):
+	if token_count >= LOCK_COST:
+		is_locked = false
+		print("final room unlocked")
+		# hide nav back arrow
+		# play unlock anime
+		# freeze click action
+		# await timer for anime play
+		# unfreeze click action
+		# send go to room signal to main
+		# change room content to static
+		# resume hidden nav arrow
+		# final_room.hide()
+		# hide()
+	else:
+		print("not enough token")
+		# hide nav back arrow
+		# freeze click action
+		# play lock anime
+		# await timer for anime play
+		# unfreeze click action
+		# resume hidden nav arrow
+		

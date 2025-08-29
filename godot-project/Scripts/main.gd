@@ -4,6 +4,8 @@ extends Node2D
 @onready var cliff_room = $CliffRoom
 @onready var painting_room = $PaintingRoom
 @onready var arcade_room = $ArcadeRoom
+@onready var door_room = $DoorRoom
+@onready var locker_room = $LockerRoom
 @onready var counter = $TokenCounter
 @onready var wakeup_scene = $WakeUp
 
@@ -12,9 +14,9 @@ extends Node2D
 	"cliff_room": cliff_room,
 	"painting_room": painting_room,
 	"arcade_room": arcade_room,
+	"door_room": door_room,
+	"locker_room": locker_room,
 	# test
-	"door_room": cliff_room,
-	"locker_room": cliff_room,
 	"finale_room": 0
 }
 
@@ -50,6 +52,16 @@ func _ready() -> void:
 	arcade_room.connect("go_to_room", Callable(self, "_on_room_changed"))
 	arcade_room.connect("wake_up", Callable(self, "_on_wake_up"))
 	
+	door_room.connect("token_delivered", Callable(self, "_on_token_delivered"))
+	door_room.connect("go_to_room", Callable(self, "_on_room_changed"))
+	door_room.connect("wake_up", Callable(self, "_on_wake_up"))
+	door_room.connect("final_lock_check", Callable(self, "_on_final_lock_check"))
+
+	locker_room.connect("token_delivered", Callable(self, "_on_token_delivered"))
+	locker_room.connect("go_to_room", Callable(self, "_on_room_changed"))
+	locker_room.connect("wake_up", Callable(self, "_on_wake_up"))
+	locker_room.connect("final_lock_check", Callable(self, "_on_final_lock_check"))
+	
 	wakeup_scene.connect("sleep_again", Callable(self, "_on_sleep_again"))
 
 	spawn_room.position = Vector2(0,0)
@@ -64,6 +76,8 @@ func _ready() -> void:
 	cliff_room.hide()
 	painting_room.hide()
 	arcade_room.hide()
+	door_room.hide()
+	locker_room.hide()
 	
 	wakeup_scene.hide()
 	
@@ -71,7 +85,6 @@ func _ready() -> void:
 func _on_token_delivered(room_name):
 	token_collection[room_name] += 1
 	token_count += 1
-	print("total count: ", token_count)
 	counter.update_token_display(token_count)
 	
 	
@@ -101,3 +114,10 @@ func _on_wake_up(reason):
 func _on_sleep_again():
 	spawn_room.start_room()
 	spawn_room.show()
+
+
+func _on_final_lock_check(room_node):
+	# send current token count to room for lock check
+	room_node.attempt_to_unlock(token_count)
+	# display current token count
+	counter.update_token_display(token_count)

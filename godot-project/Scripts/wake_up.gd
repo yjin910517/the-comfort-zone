@@ -10,7 +10,7 @@ signal sleep_again()
 
 @onready var complete_scene = $WakeUpComplete
 
-const TOTAL_TOKEN = 8
+const TOTAL_TOKEN = 9
 
 var wakeup_notes = {
 	"easy": "Difficult roads lead to beautiful destinations (Easy ones wake you up)",

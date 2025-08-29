@@ -249,7 +249,7 @@ texture_hover = ExtResource("16_mdfq7")
 script = ExtResource("11_vme5a")
 
 [node name="Room3" type="Node2D" parent="."]
-position = Vector2(42, 37)
+position = Vector2(128, 66)
 metadata/_edit_group_ = true
 
 [node name="BG" type="TextureRect" parent="Room3"]
@@ -268,10 +268,10 @@ metadata/_edit_group_ = true
 [node name="ClickDetect" type="Control" parent="Room3/Text"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -36.0
-offset_top = -46.0
-offset_right = 37.0
-offset_bottom = 46.0
+offset_left = -90.0
+offset_top = -31.0
+offset_right = 87.0
+offset_bottom = 31.0
 
 [node name="NavBack" type="TextureButton" parent="Room3"]
 offset_left = 23.0
@@ -284,7 +284,7 @@ texture_hover = ExtResource("16_mdfq7")
 script = ExtResource("11_vme5a")
 
 [node name="ButtonRoom" type="Node2D" parent="."]
-position = Vector2(68, 58)
+position = Vector2(217, 98)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="ButtonRoom"]
@@ -315,7 +315,7 @@ texture_normal = ExtResource("26_jlfvh")
 texture_hover = ExtResource("27_hojmq")
 
 [node name="FinalRoom" type="Node2D" parent="."]
-position = Vector2(113, 1)
+position = Vector2(308, 138)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="FinalRoom"]

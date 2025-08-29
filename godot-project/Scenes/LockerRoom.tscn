@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://drdl787fa04qg"]
+[gd_scene load_steps=63 format=3 uid="uid://drdl787fa04qg"]
 
 [ext_resource type="Texture2D" uid="uid://dau7fkv3e2y4y" path="res://Arts/locker_room/locker_room_bg.png" id="1_1akbl"]
 [ext_resource type="Script" path="res://Scripts/locker_room.gd" id="1_7v2be"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cdlltyvv1dv4o" path="res://Arts/narrative_rooms/twilight_room2.png" id="3_nois4"]
 [ext_resource type="Texture2D" uid="uid://benrbsyqphfct" path="res://Arts/narrative_rooms/twilight_room3.png" id="4_eahms"]
 [ext_resource type="Texture2D" uid="uid://46n58yh78y5o" path="res://Arts/narrative_rooms/final_room_locked1.png" id="5_hs4nq"]
+[ext_resource type="Script" path="res://Scripts/cloud_room.gd" id="6_51rgd"]
 [ext_resource type="Texture2D" uid="uid://c4pav5sst7gyx" path="res://Arts/narrative_rooms/final_room_locked2.png" id="6_wu7ir"]
 [ext_resource type="Texture2D" uid="uid://5jkf2jiklyhn" path="res://Arts/narrative_rooms/final_room_locked3.png" id="7_8ffj1"]
 [ext_resource type="Texture2D" uid="uid://plbvauo801ra" path="res://Arts/narrative_rooms/final_room_locked4.png" id="8_bgxok"]
@@ -16,17 +17,22 @@
 [ext_resource type="Texture2D" uid="uid://bdk50b146llh5" path="res://Arts/narrative_rooms/narrative_a3.png" id="11_k1dvm"]
 [ext_resource type="Texture2D" uid="uid://c24xojp7cf2l3" path="res://Arts/narrative_rooms/cloud_d.png" id="11_s5fe7"]
 [ext_resource type="Texture2D" uid="uid://pbenk8mmwwi7" path="res://Arts/narrative_rooms/narrative_b1.png" id="12_tetxk"]
+[ext_resource type="Texture2D" uid="uid://b6yqc6wsj7o5n" path="res://Arts/narrative_rooms/narrative_e_envolope1.png" id="13_71d2l"]
+[ext_resource type="Texture2D" uid="uid://dbjk4r18otcpg" path="res://Arts/directions/direction_sign_a1.png" id="13_twse1"]
 [ext_resource type="Texture2D" uid="uid://cro5ih23x5dc2" path="res://Arts/narrative_rooms/narrative_b2.png" id="13_vmj7c"]
 [ext_resource type="Texture2D" uid="uid://chrsem08mptsj" path="res://Arts/narrative_rooms/narrative_b3.png" id="14_4ax8u"]
+[ext_resource type="Texture2D" uid="uid://d2xtivpf6a11u" path="res://Arts/directions/direction_sign_a6.png" id="14_7lrr0"]
+[ext_resource type="Texture2D" uid="uid://dg68j3cgyixtg" path="res://Arts/narrative_rooms/narrative_e_envolope2.png" id="14_tr0v3"]
+[ext_resource type="Texture2D" uid="uid://went8u6g2yal" path="res://Arts/narrative_rooms/narrative_e_envolope3.png" id="15_dgy07"]
 [ext_resource type="PackedScene" uid="uid://do3hoaamcl58p" path="res://Scenes/Token.tscn" id="15_fhmoc"]
+[ext_resource type="Script" path="res://Scripts/letter.gd" id="16_0w00u"]
 [ext_resource type="Texture2D" uid="uid://dkrgf2f4msvhg" path="res://Arts/directions/direction_sign_b1.png" id="16_o5wq7"]
 [ext_resource type="Texture2D" uid="uid://das1wjq18aly6" path="res://Arts/directions/direction_sign_b2.png" id="17_fp1q4"]
 [ext_resource type="Script" path="res://Scripts/navigation_narrative.gd" id="18_8ubbl"]
 [ext_resource type="Texture2D" uid="uid://dirthex3am383" path="res://Arts/directions/direction_sign_b9.png" id="19_3l0p3"]
+[ext_resource type="Texture2D" uid="uid://c1ywh3cukjvc5" path="res://Arts/narrative_rooms/narrative_f_text1.png" id="19_48eyg"]
+[ext_resource type="Texture2D" uid="uid://ikfowjk6o464" path="res://Arts/narrative_rooms/narrative_f_text2.png" id="20_6iacu"]
 [ext_resource type="Texture2D" uid="uid://dxkh2y7ic647x" path="res://Arts/directions/direction_sign_b10.png" id="20_h8svm"]
-[ext_resource type="Texture2D" uid="uid://cpo2qmt8ou3u" path="res://Arts/narrative_rooms/narrative_c1.png" id="21_0b3xv"]
-[ext_resource type="Texture2D" uid="uid://ba267myrk6dtu" path="res://Arts/narrative_rooms/narrative_c_text1.png" id="22_y6qo8"]
-[ext_resource type="Texture2D" uid="uid://g4fp6qf8frsq" path="res://Arts/narrative_rooms/narrative_c_text2.png" id="23_rn6id"]
 [ext_resource type="Script" path="res://Scripts/painting_decor.gd" id="24_m52mo"]
 [ext_resource type="Texture2D" uid="uid://ri2dr67mcs4h" path="res://Arts/narrative_rooms/twilight_buttons1.png" id="25_l7qui"]
 [ext_resource type="Texture2D" uid="uid://dgo2o48itooq2" path="res://Arts/narrative_rooms/twilight_buttons2.png" id="26_i55xc"]
@@ -41,8 +47,24 @@
 [ext_resource type="Texture2D" uid="uid://ciuxlh1pt7c3r" path="res://Arts/directions/direction_sign_b3.png" id="35_76eed"]
 [ext_resource type="Script" path="res://Scripts/navigation.gd" id="36_2jtto"]
 
+[sub_resource type="Animation" id="Animation_uftf0"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(759, 65)]
+}
+
 [sub_resource type="Animation" id="Animation_x3kos"]
-resource_name = "new_animation"
+resource_name = "float"
 length = 8.0
 loop_mode = 1
 tracks/0/type = "value"
@@ -58,8 +80,15 @@ tracks/0/keys = {
 "values": [Vector2(759, 65), Vector2(1035, 65), Vector2(-50, 65), Vector2(759, 65)]
 }
 
-[sub_resource type="Animation" id="Animation_uftf0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3y2aj"]
+_data = {
+"RESET": SubResource("Animation_uftf0"),
+"float": SubResource("Animation_x3kos")
+}
+
+[sub_resource type="Animation" id="Animation_4nwv3"]
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -70,17 +99,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(759, 65)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3y2aj"]
-_data = {
-"RESET": SubResource("Animation_uftf0"),
-"new_animation": SubResource("Animation_x3kos")
+"values": [Vector2(511, 182)]
 }
 
 [sub_resource type="Animation" id="Animation_ertpi"]
-resource_name = "new_animation"
+resource_name = "float"
 length = 9.0
 loop_mode = 1
 tracks/0/type = "value"
@@ -96,7 +119,13 @@ tracks/0/keys = {
 "values": [Vector2(511, 182), Vector2(1150, 182), Vector2(-100, 182), Vector2(511, 182)]
 }
 
-[sub_resource type="Animation" id="Animation_4nwv3"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxvso"]
+_data = {
+"RESET": SubResource("Animation_4nwv3"),
+"float": SubResource("Animation_ertpi")
+}
+
+[sub_resource type="Animation" id="Animation_0cw6j"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -108,14 +137,100 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(511, 182)]
+"values": [Vector2(858, 292)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxvso"]
-_data = {
-"RESET": SubResource("Animation_4nwv3"),
-"new_animation": SubResource("Animation_ertpi")
+[sub_resource type="Animation" id="Animation_4516n"]
+resource_name = "float"
+length = 7.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.16667, 4, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(858, 292), Vector2(1100, 292), Vector2(-100, 292), Vector2(858, 292)]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3wr67"]
+_data = {
+"RESET": SubResource("Animation_0cw6j"),
+"float": SubResource("Animation_4516n")
+}
+
+[sub_resource type="Animation" id="Animation_xmbkf"]
+resource_name = "float"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.86667, 5.93333, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(275, 452), Vector2(-200, 452), Vector2(1140, 452), Vector2(275, 452)]
+}
+
+[sub_resource type="Animation" id="Animation_85cbc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(275, 452)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1peel"]
+_data = {
+"RESET": SubResource("Animation_85cbc"),
+"float": SubResource("Animation_xmbkf")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4egps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_71d2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tr0v3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dgy07")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4e4bi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_48eyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_6iacu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6vkea"]
 animations = [{
@@ -200,20 +315,6 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_wtyn3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("22_y6qo8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_rn6id")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_j4wog"]
 animations = [{
 "frames": [{
@@ -245,9 +346,9 @@ texture = ExtResource("1_1akbl")
 
 [node name="Nav" type="TextureButton" parent="."]
 offset_left = 25.0
-offset_top = 474.0
+offset_top = 21.0
 offset_right = 70.0
-offset_bottom = 498.0
+offset_bottom = 45.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("35_76eed")
 texture_hover = ExtResource("17_fp1q4")
@@ -257,6 +358,9 @@ destination = "arcade_room"
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="Room1" type="Node2D" parent="."]
+position = Vector2(36, 41)
+script = ExtResource("6_51rgd")
+metadata/_edit_group_ = true
 
 [node name="BG" type="ColorRect" parent="Room1"]
 offset_right = 960.0
@@ -286,7 +390,7 @@ texture = ExtResource("9_iobjq")
 libraries = {
 "": SubResource("AnimationLibrary_3y2aj")
 }
-autoplay = "new_animation"
+autoplay = "RESET"
 speed_scale = 0.5
 
 [node name="Cloud2" type="Sprite2D" parent="Room1"]
@@ -298,7 +402,6 @@ texture = ExtResource("10_mkmpt")
 libraries = {
 "": SubResource("AnimationLibrary_rxvso")
 }
-autoplay = "new_animation"
 speed_scale = 0.5
 
 [node name="Cloud3" type="Sprite2D" parent="Room1"]
@@ -306,60 +409,89 @@ position = Vector2(858, 292)
 scale = Vector2(4, 4)
 texture = ExtResource("11_s5fe7")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Room1/Cloud3"]
+libraries = {
+"": SubResource("AnimationLibrary_3wr67")
+}
+speed_scale = 0.5
+
 [node name="Cloud4" type="Sprite2D" parent="Room1"]
 position = Vector2(275, 452)
 scale = Vector2(2, 2)
 texture = ExtResource("10_mkmpt")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Room1/Cloud4"]
+libraries = {
+"": SubResource("AnimationLibrary_1peel")
+}
+speed_scale = 0.5
+
 [node name="Room2" type="Node2D" parent="."]
-position = Vector2(52, 590)
+position = Vector2(92, 93)
 metadata/_edit_group_ = true
 
-[node name="Background" type="AnimatedSprite2D" parent="Room2"]
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_6vkea")
-animation = &"rm2"
-autoplay = "rm2"
-centered = false
+[node name="BG" type="ColorRect" parent="Room2"]
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.254902, 0.113725, 0.192157, 1)
 
-[node name="Token" parent="Room2" instance=ExtResource("15_fhmoc")]
-position = Vector2(484, 479)
+[node name="Letter" type="AnimatedSprite2D" parent="Room2"]
+position = Vector2(492, 256)
 scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4egps")
+frame = 2
+script = ExtResource("16_0w00u")
+metadata/_edit_group_ = true
+
+[node name="Token" parent="Room2/Letter" instance=ExtResource("15_fhmoc")]
+position = Vector2(2, -30)
+scale = Vector2(2, 2)
+
+[node name="ClickDetect" type="Control" parent="Room2/Letter"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -74.0
+offset_top = -16.0
+offset_right = 74.0
+offset_bottom = 64.0
 
 [node name="NavBack" type="TextureButton" parent="Room2"]
-offset_left = 23.0
-offset_top = 469.0
-offset_right = 62.0
-offset_bottom = 493.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("19_3l0p3")
-texture_hover = ExtResource("20_h8svm")
+offset_left = 55.0
+offset_top = 448.0
+offset_right = 137.0
+offset_bottom = 490.0
+texture_normal = ExtResource("13_twse1")
+texture_hover = ExtResource("14_7lrr0")
+flip_h = true
 script = ExtResource("18_8ubbl")
 
 [node name="Room3" type="Node2D" parent="."]
-position = Vector2(840, 702)
+position = Vector2(145, 134)
 metadata/_edit_group_ = true
 
-[node name="BG" type="TextureRect" parent="Room3"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(2, 2)
-texture = ExtResource("21_0b3xv")
+[node name="BG" type="ColorRect" parent="Room3"]
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.0823529, 0.113725, 0.156863, 1)
 
 [node name="Text" type="AnimatedSprite2D" parent="Room3"]
-position = Vector2(453, 277)
+position = Vector2(491, 263)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_wtyn3")
+sprite_frames = SubResource("SpriteFrames_4e4bi")
 script = ExtResource("24_m52mo")
 metadata/_edit_group_ = true
 
 [node name="ClickDetect" type="Control" parent="Room3/Text"]
 layout_mode = 3
-anchors_preset = 0
-offset_left = -36.0
-offset_top = -46.0
-offset_right = 37.0
-offset_bottom = 46.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -23.0
+offset_right = -152.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="NavBack" type="TextureButton" parent="Room3"]
 offset_left = 23.0
@@ -372,7 +504,7 @@ texture_hover = ExtResource("20_h8svm")
 script = ExtResource("18_8ubbl")
 
 [node name="ButtonRoom" type="Node2D" parent="."]
-position = Vector2(1322, 391)
+position = Vector2(215, 193)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="ButtonRoom"]
@@ -401,7 +533,7 @@ texture_normal = ExtResource("27_eeh8n")
 texture_hover = ExtResource("28_h71v3")
 
 [node name="FinalRoom" type="Node2D" parent="."]
-position = Vector2(1826, 44)
+position = Vector2(278, 247)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="FinalRoom"]
