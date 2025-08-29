@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://do3hoaamcl58p"]
+[gd_scene load_steps=15 format=3 uid="uid://do3hoaamcl58p"]
 
 [ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="1_cqvo3"]
 [ext_resource type="Texture2D" uid="uid://bkaspy0uc73xg" path="res://Arts/memories/memory_token_small2.png" id="2_485g5"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dcu3xrmplglgf" path="res://Arts/memories/memory_token_small9.png" id="9_i724k"]
 [ext_resource type="Texture2D" uid="uid://dssyca6ekf55l" path="res://Arts/memories/memory_token_small11.png" id="10_j0m43"]
 [ext_resource type="Texture2D" uid="uid://qbgwlqkv4rjb" path="res://Arts/memories/memory_token_small10.png" id="11_gpyvg"]
+[ext_resource type="AudioStream" uid="uid://bjj7vtrqr208q" path="res://Audios/token-659677__lilmati.wav" id="13_1o8nb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oxf1p"]
 animations = [{
@@ -65,6 +66,7 @@ autoplay = "default"
 script = ExtResource("3_vwha5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_1o8nb")
 
 [node name="ClickControl" type="Control" parent="."]
 layout_mode = 3

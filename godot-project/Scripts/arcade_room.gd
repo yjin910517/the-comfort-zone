@@ -11,6 +11,9 @@ var levels = {
 	"hard": preload("res://Scenes/ArcadeHardLevel.tscn"),
 }
 
+@onready var menu_audio = $MenuAudio
+@onready var win_audio = $WinAudio
+
 @onready var room_view = $RoomView
 @onready var room_nav = $RoomView/Nav
 @onready var arcade_click = $RoomView/ClickDetect
@@ -50,8 +53,6 @@ func _ready() -> void:
 	easy_win.hide()
 	hard_win.hide()
 	
-	# to do: add arcade bgm and basic sound effect
-	
 
 # room navigation
 func _on_room_nav():
@@ -68,12 +69,14 @@ func _on_arcade_gui_input(event):
 # start easy level
 func _on_easy_btn_pressed():
 	menu_view.hide()
+	menu_audio.play()
 	_start_new_level("easy")
 
 
 # start hard level
 func _on_hard_btn_pressed():
 	menu_view.hide()
+	menu_audio.play()
 	_start_new_level("hard")
 
 
@@ -107,12 +110,14 @@ func _on_arcade_token_collected(token_node):
 func _on_easy_level_ended(level_node):
 	level_node.queue_free()
 	easy_win.show()
+	win_audio.play()
 	
 
 # show win screen for hard
 func _on_hard_level_ended(level_node):
 	level_node.queue_free()
 	hard_win.show()
+	win_audio.play()
 	
 
 # wake up signal to main

@@ -5,6 +5,7 @@ signal wake_up(wakeup_reason)
 signal go_to_room(destination_name)
 signal final_lock_check(room_node)
 
+@onready var door_audio = $DoorOpen
 @onready var room_nav = $Nav
 @onready var doors = $Doors
 @onready var room1 = $Room1
@@ -110,6 +111,7 @@ func _on_room_nav():
 func _on_door_opened(outcome):
 	
 	var new_room = outcome_mapping[outcome]
+	door_audio.play()
 	new_room.show()
 	
 	# set up the lock display 

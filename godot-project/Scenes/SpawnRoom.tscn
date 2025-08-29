@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://by0o23i3me25s"]
+[gd_scene load_steps=27 format=3 uid="uid://by0o23i3me25s"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_room.gd" id="1_gy4y7"]
 [ext_resource type="Texture2D" uid="uid://wkad05jc8ukb" path="res://Arts/spawn/corridor1.png" id="2_6v63r"]
@@ -8,13 +8,20 @@
 [ext_resource type="Texture2D" uid="uid://dbjk4r18otcpg" path="res://Arts/directions/direction_sign_a1.png" id="4_2w8wu"]
 [ext_resource type="Texture2D" uid="uid://b6bae6synq2q7" path="res://Arts/spawn/corridor3.png" id="4_wsvdr"]
 [ext_resource type="Texture2D" uid="uid://eiu47cpfja8l" path="res://Arts/directions/direction_sign_a2.png" id="5_i6gpn"]
+[ext_resource type="Texture2D" uid="uid://bw4o60q57ngyt" path="res://Arts/spawn/spawn_room3.png" id="7_4rq5m"]
 [ext_resource type="Texture2D" uid="uid://clkp7nsvbx04k" path="res://Arts/spawn/tutorial_room1.png" id="7_da234"]
+[ext_resource type="Texture2D" uid="uid://i6jyaxrw1a04" path="res://Arts/spawn/spawn_room4.png" id="8_18pq3"]
 [ext_resource type="Texture2D" uid="uid://clfa4wx3g1bip" path="res://Arts/spawn/tutorial_room2.png" id="8_gojvn"]
+[ext_resource type="Texture2D" uid="uid://c123hvbnd1hj4" path="res://Arts/spawn/spawn_room5.png" id="9_6le5v"]
+[ext_resource type="Texture2D" uid="uid://e86pctcm00i" path="res://Arts/spawn/spawn_room6.png" id="10_qn3p5"]
+[ext_resource type="Texture2D" uid="uid://bkydy08vcu1vq" path="res://Arts/spawn/spawn_room7.png" id="11_7bwlf"]
 [ext_resource type="Script" path="res://Scripts/navigation_in_room.gd" id="11_vpbg2"]
+[ext_resource type="Texture2D" uid="uid://7nbrwfitafi6" path="res://Arts/spawn/spawn_room8.png" id="12_j0r58"]
 [ext_resource type="Texture2D" uid="uid://2qilftnm7y1r" path="res://Arts/directions/direction_sign_a3.png" id="12_pq630"]
 [ext_resource type="Texture2D" uid="uid://d2xtivpf6a11u" path="res://Arts/directions/direction_sign_a6.png" id="13_b2t44"]
 [ext_resource type="Texture2D" uid="uid://csa5v7xfkuw1d" path="res://Arts/directions/direction_sign_a4.png" id="13_xhcgn"]
 [ext_resource type="PackedScene" uid="uid://do3hoaamcl58p" path="res://Scenes/Token.tscn" id="14_mhrhf"]
+[ext_resource type="Texture2D" uid="uid://cstgruf7x1uhe" path="res://Arts/spawn/tutorial_room_text.png" id="18_qee0c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_umtbs"]
 animations = [{
@@ -38,10 +45,33 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_barb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4rq5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_18pq3")
 }],
 "loop": true,
 "name": &"spawn",
-"speed": 5.0
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_6le5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qn3p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7bwlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_j0r58")
+}],
+"loop": true,
+"name": &"spawn_again",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -55,6 +85,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_u0mtp"]
+resource_name = "fade"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.53333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pigab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0335c"]
+_data = {
+"RESET": SubResource("Animation_pigab"),
+"fade": SubResource("Animation_u0mtp")
+}
+
 [node name="SpawnRoom" type="Node2D"]
 script = ExtResource("1_gy4y7")
 
@@ -65,6 +133,7 @@ metadata/_edit_group_ = true
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_umtbs")
 animation = &"spawn"
+autoplay = "spawn"
 centered = false
 
 [node name="Nav0" type="TextureButton" parent="SpawnView"]
@@ -81,12 +150,26 @@ destination = "tutorial"
 
 [node name="TutorialView" type="Node2D" parent="."]
 position = Vector2(37, -45)
+metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="TutorialView"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_umtbs")
 animation = &"tutorial"
 centered = false
+
+[node name="Notes" type="Sprite2D" parent="TutorialView"]
+position = Vector2(773, 123)
+rotation = 0.261799
+scale = Vector2(2, 2)
+texture = ExtResource("18_qee0c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialView/Notes"]
+libraries = {
+"": SubResource("AnimationLibrary_0335c")
+}
+autoplay = "fade"
+speed_scale = 0.5
 
 [node name="Nav1" type="TextureButton" parent="TutorialView"]
 offset_left = 30.0
@@ -116,7 +199,7 @@ position = Vector2(444, 196)
 scale = Vector2(4, 4)
 
 [node name="Corridor" type="Node2D" parent="."]
-position = Vector2(110, -120)
+position = Vector2(157, 35)
 metadata/_edit_group_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="Corridor"]

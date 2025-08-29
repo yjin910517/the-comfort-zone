@@ -7,6 +7,8 @@ signal wake_up(wakeup_reason)
 
 @export var room_name: String
 
+@onready var audio = $AudioStreamPlayer2D
+
 @onready var room_view = $RoomView
 @onready var room_click = $RoomView/ClickDetect
 @onready var poster_icon = $RoomView/PosterIcon
@@ -88,8 +90,9 @@ func _on_yes_btn_pressed():
 	flip_text.frame = result_frame
 	flip_text.show()
 	
-	# if sucess, update room display
+	# if sucess, play sound and update room display
 	if result_frame == 0:
+		audio.play()
 		room_click.queue_free()
 		poster_icon.frame = 1
 		

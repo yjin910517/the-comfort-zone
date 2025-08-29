@@ -1,8 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://slk36o4w5gu3"]
+[gd_scene load_steps=28 format=3 uid="uid://slk36o4w5gu3"]
 
 [ext_resource type="Script" path="res://Scripts/wake_up.gd" id="1_kmaf7"]
+[ext_resource type="AudioStream" uid="uid://cbpntdr76ur84" path="res://Audios/wakeup-normal-810754__mokasza__level-up-02.mp3" id="2_86h76"]
 [ext_resource type="Texture2D" uid="uid://dcv6dy6w0caa0" path="res://Arts/wakeup/wakeup_scenes7.png" id="2_622lp"]
 [ext_resource type="Texture2D" uid="uid://dcvysnxm5rlci" path="res://Arts/wakeup/wakeup_scenes8.png" id="3_6xalx"]
+[ext_resource type="AudioStream" uid="uid://dgyi6xbcdcxbn" path="res://Audios/wakeup-special-complete-810755__mokasza__level-up-03.mp3" id="3_87o7m"]
 [ext_resource type="Texture2D" uid="uid://crvcs6pps4uhi" path="res://Arts/wakeup/wakeup_scenes9.png" id="4_3byjw"]
 [ext_resource type="Texture2D" uid="uid://big3uxfgd5daj" path="res://Arts/wakeup/wakeup_scenes1.png" id="5_71gya"]
 [ext_resource type="Texture2D" uid="uid://bk62a3yjnx07j" path="res://Arts/wakeup/wakeup_scenes2.png" id="6_o14j8"]
@@ -107,6 +109,12 @@ animations = [{
 
 [node name="WakeUp" type="Node2D"]
 script = ExtResource("1_kmaf7")
+
+[node name="Normal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_86h76")
+
+[node name="Special" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_87o7m")
 
 [node name="WakeUpNormal" type="Node2D" parent="."]
 metadata/_edit_group_ = true

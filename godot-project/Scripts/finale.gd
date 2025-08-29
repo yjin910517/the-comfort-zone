@@ -13,7 +13,7 @@ func _ready() -> void:
 	token.hide()
 	
 	# test
-	# start_finale_scene()
+	start_finale_scene()
 	
 	
 func start_finale_scene():

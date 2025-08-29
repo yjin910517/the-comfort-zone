@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var title_page = $TitlePage
 @onready var spawn_room = $SpawnRoom
 @onready var cliff_room = $CliffRoom
 @onready var painting_room = $PaintingRoom
@@ -38,6 +39,8 @@ var has_woke_up = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	title_page.connect("go_to_room", Callable(self, "_on_room_changed"))
+	
 	spawn_room.connect("token_delivered", Callable(self, "_on_token_delivered"))
 	spawn_room.connect("go_to_room", Callable(self, "_on_room_changed"))
 	
@@ -66,6 +69,7 @@ func _ready() -> void:
 	
 	wakeup_scene.connect("sleep_again", Callable(self, "_on_sleep_again"))
 
+	title_page.position = Vector2(0,0)
 	spawn_room.position = Vector2(0,0)
 	cliff_room.position = Vector2(0,0)
 	painting_room.position = Vector2(0,0)
@@ -75,9 +79,8 @@ func _ready() -> void:
 	finale_room.position = Vector2(0,0)
 	wakeup_scene.position = Vector2(0,0)
 	
-	# test
-	spawn_room.show()
-	
+	title_page.show()
+	spawn_room.hide()
 	cliff_room.hide()
 	painting_room.hide()
 	arcade_room.hide()
@@ -109,7 +112,7 @@ func _on_room_changed(destination):
 		locker_room.get_node("FinalRoom").is_locked = false
 		# start the finale scene
 		new_room.start_finale_scene()
-		
+	
 	new_room.show()
 
 
@@ -118,10 +121,6 @@ func _on_wake_up(reason):
 	if has_woke_up == false:
 		has_woke_up = true
 		spawn_room.update_spawn_view()
-		
-	print("waking up by ", reason)
-	# to do: free black screen for 1 second 
-	# to do: sound effect
 	
 	var wakeup_data = {
 		"count": token_count,

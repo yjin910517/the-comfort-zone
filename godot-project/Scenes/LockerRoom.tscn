@@ -1,8 +1,9 @@
-[gd_scene load_steps=73 format=3 uid="uid://drdl787fa04qg"]
+[gd_scene load_steps=76 format=3 uid="uid://drdl787fa04qg"]
 
 [ext_resource type="Texture2D" uid="uid://dau7fkv3e2y4y" path="res://Arts/locker_room/locker_room_bg.png" id="1_1akbl"]
 [ext_resource type="Script" path="res://Scripts/locker_room.gd" id="1_7v2be"]
 [ext_resource type="Texture2D" uid="uid://dcqme125buf42" path="res://Arts/narrative_rooms/twilight_room1.png" id="2_4a0oa"]
+[ext_resource type="AudioStream" uid="uid://qvsfk7lakt3o" path="res://Audios/door.wav" id="2_s85nx"]
 [ext_resource type="Texture2D" uid="uid://cdlltyvv1dv4o" path="res://Arts/narrative_rooms/twilight_room2.png" id="3_nois4"]
 [ext_resource type="Texture2D" uid="uid://benrbsyqphfct" path="res://Arts/narrative_rooms/twilight_room3.png" id="4_eahms"]
 [ext_resource type="Texture2D" uid="uid://46n58yh78y5o" path="res://Arts/narrative_rooms/final_room_locked1.png" id="5_hs4nq"]
@@ -29,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://dkrgf2f4msvhg" path="res://Arts/directions/direction_sign_b1.png" id="16_o5wq7"]
 [ext_resource type="Texture2D" uid="uid://das1wjq18aly6" path="res://Arts/directions/direction_sign_b2.png" id="17_fp1q4"]
 [ext_resource type="Script" path="res://Scripts/navigation_narrative.gd" id="18_8ubbl"]
+[ext_resource type="AudioStream" uid="uid://ielnelby1yms" path="res://Audios/paper.wav" id="18_y4ijl"]
 [ext_resource type="Texture2D" uid="uid://dirthex3am383" path="res://Arts/directions/direction_sign_b9.png" id="19_3l0p3"]
 [ext_resource type="Texture2D" uid="uid://c1ywh3cukjvc5" path="res://Arts/narrative_rooms/narrative_f_text1.png" id="19_48eyg"]
 [ext_resource type="Texture2D" uid="uid://ikfowjk6o464" path="res://Arts/narrative_rooms/narrative_f_text2.png" id="20_6iacu"]
@@ -48,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://ciuxlh1pt7c3r" path="res://Arts/directions/direction_sign_b3.png" id="35_76eed"]
 [ext_resource type="Script" path="res://Scripts/navigation.gd" id="36_2jtto"]
 [ext_resource type="Script" path="res://Scripts/final_lock_room.gd" id="41_rvtpu"]
+[ext_resource type="AudioStream" uid="uid://bpm8xu7qmitmp" path="res://Audios/unlock.wav" id="44_m8f1v"]
 [ext_resource type="Texture2D" uid="uid://d1emq8fgfdc3" path="res://Arts/narrative_rooms/final_room_lock_anime1.png" id="46_nsel0"]
 [ext_resource type="Texture2D" uid="uid://cyrsqqbl56v8f" path="res://Arts/narrative_rooms/final_room_lock_anime4.png" id="49_rcwu5"]
 [ext_resource type="Texture2D" uid="uid://c0i4ntr3s4i50" path="res://Arts/narrative_rooms/final_room_lock_anime5.png" id="50_dnxqg"]
@@ -173,6 +176,21 @@ _data = {
 "float": SubResource("Animation_4516n")
 }
 
+[sub_resource type="Animation" id="Animation_85cbc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(275, 452)]
+}
+
 [sub_resource type="Animation" id="Animation_xmbkf"]
 resource_name = "float"
 length = 9.0
@@ -188,21 +206,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(275, 452), Vector2(-200, 452), Vector2(1140, 452), Vector2(275, 452)]
-}
-
-[sub_resource type="Animation" id="Animation_85cbc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(275, 452)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1peel"]
@@ -390,6 +393,9 @@ animations = [{
 [node name="LockerRoom" type="Node2D"]
 script = ExtResource("1_7v2be")
 
+[node name="DoorOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_s85nx")
+
 [node name="BG" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -495,6 +501,9 @@ frame = 2
 script = ExtResource("16_0w00u")
 metadata/_edit_group_ = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Room2/Letter"]
+stream = ExtResource("18_y4ijl")
+
 [node name="Token" parent="Room2/Letter" instance=ExtResource("15_fhmoc")]
 position = Vector2(2, -30)
 scale = Vector2(2, 2)
@@ -588,6 +597,9 @@ texture_hover = ExtResource("28_h71v3")
 position = Vector2(278, 247)
 script = ExtResource("41_rvtpu")
 metadata/_edit_group_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FinalRoom"]
+stream = ExtResource("44_m8f1v")
 
 [node name="Background" type="AnimatedSprite2D" parent="FinalRoom"]
 scale = Vector2(2, 2)

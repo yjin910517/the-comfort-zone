@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-
+@onready var audio = $AudioStreamPlayer2D
 @onready var token = $Token
 @onready var click_detect = $ClickDetect
 
@@ -18,6 +18,7 @@ func _on_letter_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		current_frame += 1
 		self.frame = current_frame
+		audio.play()
 		
 		# reveal token in the envelope
 		if current_frame == 2:

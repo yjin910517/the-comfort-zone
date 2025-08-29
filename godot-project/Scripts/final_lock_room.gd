@@ -3,6 +3,7 @@ extends Node2D
 signal lock_request()
 signal unlocked()
 
+@onready var unlock_audio = $AudioStreamPlayer2D
 @onready var nav = $NavBack
 @onready var lock = $LockIcon
 @onready var lock_click = $LockIcon/ClickDetect
@@ -45,6 +46,7 @@ func lock_check(token_count):
 		nav.hide()
 		lock_click.hide()
 		lock.play("unlock_success")
+		unlock_audio.play()
 		await get_tree().create_timer(1.2).timeout
 		
 		# clean up current scene and emit signal

@@ -18,14 +18,14 @@ func _ready() -> void:
 
 
 func start_dialogue():
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(2).timeout
 	# enter greeting
 	p1.show()
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	
 	# enter open line
 	p2.show()
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	
 	# enter 1st paragraph
 	p3.get_node("AnimationPlayer").play("fade_in")

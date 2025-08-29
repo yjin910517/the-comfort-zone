@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bnux2ojovsyf6"]
+[gd_scene load_steps=21 format=4 uid="uid://bnux2ojovsyf6"]
 
 [ext_resource type="Script" path="res://Scripts/arcade_level.gd" id="1_al143"]
 [ext_resource type="Texture2D" uid="uid://duc5cl0k0ylnq" path="res://Arts/arcade/arcade_tileset.png" id="1_d26gl"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b5a4jf7gq3stv" path="res://Arts/arcade/arcade_icons1.png" id="8_ljnqj"]
 [ext_resource type="Script" path="res://Scripts/arcade_finish.gd" id="9_6bug5"]
 [ext_resource type="Texture2D" uid="uid://dnt0s8y06oxgt" path="res://Arts/arcade/arcade_icons2.png" id="9_p7yjd"]
+[ext_resource type="AudioStream" uid="uid://bjj7vtrqr208q" path="res://Audios/token-659677__lilmati.wav" id="10_iyw7d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2komy"]
 texture = ExtResource("1_d26gl")
@@ -129,6 +130,7 @@ position = Vector2(0.75, 0)
 shape = SubResource("RectangleShape2D_52wkr")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TileMapLayer/Token"]
+stream = ExtResource("10_iyw7d")
 
 [node name="Finish" type="Area2D" parent="TileMapLayer"]
 position = Vector2(104, 8)

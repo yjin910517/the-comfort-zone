@@ -2,6 +2,9 @@ extends Node2D
 
 signal sleep_again()
 
+@onready var normal_audio = $Normal
+@onready var special_audio = $Special
+
 @onready var normal_scene = $WakeUpNormal
 @onready var sleep_btn1 = $WakeUpNormal/SleepBtn
 
@@ -35,20 +38,25 @@ func show_wakeup_scene(wakeup_data):
 	var token_count = wakeup_data["count"]
 	var wakeup_reason = wakeup_data["reason"]
 	
+	await get_tree().create_timer(0.5).timeout
+	
 	# show the normal wake up scene 
 	if wakeup_reason != "finale" and token_count < TOTAL_TOKEN:
 		normal_scene.get_node("Progress/Label").text = str(token_count) + "/" + str(TOTAL_TOKEN) + " Collected"
 		normal_scene.get_node("Notes/Label").text = wakeup_notes[wakeup_reason]
 		normal_scene.show()
+		normal_audio.play()
 	
 	# show the special wake up scene when final room unlocked
 	elif wakeup_reason == "finale" and token_count < TOTAL_TOKEN:
 		special_scene.get_node("Progress/Label").text = str(token_count) + "/" + str(TOTAL_TOKEN) + " Collected"
 		special_scene.show()
+		special_audio.play()
 	
 	# show the 100% achievement end scene
 	elif token_count == TOTAL_TOKEN:
 		complete_scene.show()
+		special_audio.play()
 	
 	show()
 	

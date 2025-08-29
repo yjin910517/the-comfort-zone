@@ -1,17 +1,87 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3f014t608a5p"]
+[gd_scene load_steps=31 format=3 uid="uid://d3f014t608a5p"]
 
 [ext_resource type="PackedScene" uid="uid://by0o23i3me25s" path="res://Scenes/SpawnRoom.tscn" id="1_dymxr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_pw2wb"]
+[ext_resource type="Script" path="res://Scripts/title_page.gd" id="2_2m62g"]
 [ext_resource type="PackedScene" uid="uid://bi7f0fxw41sov" path="res://Scenes/CliffRoom.tscn" id="2_hjh60"]
+[ext_resource type="Texture2D" uid="uid://g85y2tn7r5m0" path="res://Arts/intro/title_page1.png" id="2_yr08d"]
 [ext_resource type="PackedScene" uid="uid://c8cu18ysse1ix" path="res://Scenes/PaintingRoom.tscn" id="3_jxguw"]
+[ext_resource type="Texture2D" uid="uid://bd05nau21pprl" path="res://Arts/intro/title_page2.png" id="3_v6oic"]
 [ext_resource type="PackedScene" uid="uid://boms4qbrf27st" path="res://Scenes/ArcadeRoom.tscn" id="4_mopra"]
+[ext_resource type="Texture2D" uid="uid://d2si42vn3rxcg" path="res://Arts/intro/title_page3.png" id="4_wu65n"]
+[ext_resource type="Texture2D" uid="uid://cs461muasf7pr" path="res://Arts/intro/title_page4.png" id="5_8lbgs"]
+[ext_resource type="Texture2D" uid="uid://d06g7h2n4np3p" path="res://Arts/intro/title_page_button1.png" id="6_6sbrf"]
 [ext_resource type="Texture2D" uid="uid://c888od2ahag2" path="res://Arts/memories/memory_token_small1.png" id="6_lkut4"]
 [ext_resource type="PackedScene" uid="uid://bd0qxueq3hhv6" path="res://Scenes/DoorRoom.tscn" id="6_lsg2s"]
 [ext_resource type="Script" path="res://Scripts/token_counter.gd" id="6_yxv43"]
+[ext_resource type="Texture2D" uid="uid://umrbmtwlaqem" path="res://Arts/intro/intro_scene4.png" id="7_34dq1"]
+[ext_resource type="Texture2D" uid="uid://b33c1drg3nfpj" path="res://Arts/intro/title_page_button2.png" id="7_814b2"]
 [ext_resource type="PackedScene" uid="uid://drdl787fa04qg" path="res://Scenes/LockerRoom.tscn" id="7_k4sn7"]
+[ext_resource type="Texture2D" uid="uid://dk8tq1avxur0o" path="res://Arts/intro/intro_scene1.png" id="8_jx7y6"]
 [ext_resource type="PackedScene" uid="uid://b61v2t4ng4aaq" path="res://Scenes/Finale.tscn" id="8_p80jr"]
+[ext_resource type="Texture2D" uid="uid://b4k7q0q8ufbt" path="res://Arts/intro/title_page_button3.png" id="8_vqktg"]
 [ext_resource type="FontFile" uid="uid://bjt4mj3qatrcy" path="res://Fonts/comic-relief/ComicRelief.ttf" id="8_ywrof"]
+[ext_resource type="Texture2D" uid="uid://dd0tupgm5w575" path="res://Arts/intro/title_page_button4.png" id="9_41lbn"]
 [ext_resource type="PackedScene" uid="uid://slk36o4w5gu3" path="res://Scenes/WakeUp.tscn" id="9_ky4d0"]
+[ext_resource type="Texture2D" uid="uid://b85lcocpyuryc" path="res://Arts/intro/intro_scene2.png" id="9_qsagc"]
+[ext_resource type="Texture2D" uid="uid://ces621l0ttxli" path="res://Arts/intro/intro_scene3.png" id="10_eqxv3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o0irf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yr08d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v6oic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wu65n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8lbgs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_34dq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jx7y6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qsagc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eqxv3")
+}],
+"loop": true,
+"name": &"sleeping",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iuh62"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6sbrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_814b2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vqktg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_41lbn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [sub_resource type="Animation" id="Animation_q4fys"]
 length = 0.001
@@ -51,6 +121,54 @@ _data = {
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_pw2wb")
+
+[node name="TitlePage" type="Node2D" parent="."]
+position = Vector2(1049, 557)
+script = ExtResource("2_2m62g")
+metadata/_edit_group_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="TitlePage"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_o0irf")
+autoplay = "default"
+centered = false
+
+[node name="Button" type="AnimatedSprite2D" parent="TitlePage"]
+position = Vector2(483, 387)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_iuh62")
+autoplay = "default"
+
+[node name="ClickDetect" type="Control" parent="TitlePage/Button"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.5
+offset_top = -29.0
+offset_right = -44.5
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TitlePage"]
+offset_left = 331.0
+offset_top = 493.0
+offset_right = 665.0
+offset_bottom = 533.0
+theme_override_colors/font_color = Color(0.45098, 0.745098, 0.827451, 1)
+theme_override_fonts/font = ExtResource("8_ywrof")
+theme_override_font_sizes/font_size = 28
+text = "A game by @birdnofoot"
+
+[node name="Sleeping" type="AnimatedSprite2D" parent="TitlePage"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_o0irf")
+animation = &"sleeping"
+autoplay = "sleeping"
+frame = 2
+frame_progress = 0.614451
+centered = false
 
 [node name="SpawnRoom" parent="." instance=ExtResource("1_dymxr")]
 room_name = "spawn_room"

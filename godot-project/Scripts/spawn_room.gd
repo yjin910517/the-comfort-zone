@@ -11,6 +11,7 @@ signal go_to_room(path_dict)
 
 @onready var tutorial_view = $TutorialView
 @onready var tutorial_bg = $TutorialView/Background
+@onready var tutorial_text = $TutorialView/Notes
 @onready var token = $TutorialView/Token
 @onready var nav1 = $TutorialView/Nav1
 @onready var nav2 = $TutorialView/Nav2
@@ -49,6 +50,8 @@ func _ready() -> void:
 	tutorial_view.position = Vector2(0,0)
 	corridor.position = Vector2(0,0)
 	
+	tutorial_text.hide()
+	
 	start_room()
 	
 
@@ -61,7 +64,7 @@ func start_room():
 
 # after the first wakeup, the view changes
 func update_spawn_view():
-	spawn_bg.frame = 1
+	spawn_bg.play("spawn_again")
 	
 
 # navigation inside spawn area
@@ -79,8 +82,8 @@ func _on_spawn_token_collected(token_node):
 	token_collected = true
 	# update wall visuals
 	tutorial_bg.frame = 1
+	tutorial_text.show()
 	
-	# to do: add another animated text on wall
 	emit_signal("token_delivered", "spawn_room")
 
 

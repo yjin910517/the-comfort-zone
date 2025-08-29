@@ -1,8 +1,9 @@
-[gd_scene load_steps=55 format=3 uid="uid://bd0qxueq3hhv6"]
+[gd_scene load_steps=57 format=3 uid="uid://bd0qxueq3hhv6"]
 
 [ext_resource type="Script" path="res://Scripts/door_room.gd" id="1_jur16"]
 [ext_resource type="Texture2D" uid="uid://cinc1wf83ervb" path="res://Arts/door_room/door_room_bg1.png" id="1_udf8s"]
 [ext_resource type="Texture2D" uid="uid://cig8ksdxv72ns" path="res://Arts/door_room/door_room_bg2.png" id="2_0cxla"]
+[ext_resource type="AudioStream" uid="uid://qvsfk7lakt3o" path="res://Audios/door.wav" id="2_lj1ef"]
 [ext_resource type="Texture2D" uid="uid://bktbiqxf5hehp" path="res://Arts/door_room/door_room_bg3.png" id="3_a2acq"]
 [ext_resource type="Texture2D" uid="uid://de3fp5pvo8c1n" path="res://Arts/narrative_rooms/narrative_a1.png" id="5_01l1h"]
 [ext_resource type="Texture2D" uid="uid://dcqme125buf42" path="res://Arts/narrative_rooms/twilight_room1.png" id="5_tyo1g"]
@@ -39,6 +40,7 @@
 [ext_resource type="Script" path="res://Scripts/final_lock_room.gd" id="34_vg4es"]
 [ext_resource type="Texture2D" uid="uid://d3wp7y6n3gf6g" path="res://Arts/narrative_rooms/final_room_lock_icon4.png" id="35_p1wgy"]
 [ext_resource type="Texture2D" uid="uid://cx1p2vm4ig6ml" path="res://Arts/narrative_rooms/final_room_unlocked.png" id="35_ti5td"]
+[ext_resource type="AudioStream" uid="uid://bpm8xu7qmitmp" path="res://Audios/unlock.wav" id="36_v17s6"]
 [ext_resource type="Texture2D" uid="uid://ciuxlh1pt7c3r" path="res://Arts/directions/direction_sign_b3.png" id="38_8444w"]
 [ext_resource type="Script" path="res://Scripts/navigation.gd" id="39_s53sr"]
 [ext_resource type="Texture2D" uid="uid://cyrsqqbl56v8f" path="res://Arts/narrative_rooms/final_room_lock_anime4.png" id="40_6aqhx"]
@@ -312,6 +314,9 @@ animations = [{
 [node name="DoorRoom" type="Node2D"]
 script = ExtResource("1_jur16")
 
+[node name="DoorOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_lj1ef")
+
 [node name="Background" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ldff3")
@@ -453,6 +458,9 @@ texture_hover = ExtResource("27_hojmq")
 position = Vector2(278, 247)
 script = ExtResource("34_vg4es")
 metadata/_edit_group_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FinalRoom"]
+stream = ExtResource("36_v17s6")
 
 [node name="Background" type="AnimatedSprite2D" parent="FinalRoom"]
 scale = Vector2(2, 2)
