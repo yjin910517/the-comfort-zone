@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var title_page = $TitlePage
+@onready var bgm = $BGM
+
 @onready var spawn_room = $SpawnRoom
 @onready var cliff_room = $CliffRoom
 @onready var painting_room = $PaintingRoom
@@ -8,6 +10,7 @@ extends Node2D
 @onready var door_room = $DoorRoom
 @onready var locker_room = $LockerRoom
 @onready var finale_room = $FinaleScene
+
 @onready var counter = $TokenCounter
 @onready var wakeup_scene = $WakeUp
 
@@ -40,6 +43,7 @@ var has_woke_up = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	title_page.connect("go_to_room", Callable(self, "_on_room_changed"))
+	title_page.connect("start_bgm", Callable(self, "_on_start_bgm"))
 	
 	spawn_room.connect("token_delivered", Callable(self, "_on_token_delivered"))
 	spawn_room.connect("go_to_room", Callable(self, "_on_room_changed"))
@@ -91,6 +95,10 @@ func _ready() -> void:
 	
 	# randomize once for the whole game session
 	randomize()
+	
+
+func _on_start_bgm():
+	bgm.play()
 	
 	
 func _on_token_delivered(room_name):

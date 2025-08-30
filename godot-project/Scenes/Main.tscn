@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://d3f014t608a5p"]
+[gd_scene load_steps=32 format=3 uid="uid://d3f014t608a5p"]
 
 [ext_resource type="PackedScene" uid="uid://by0o23i3me25s" path="res://Scenes/SpawnRoom.tscn" id="1_dymxr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_pw2wb"]
 [ext_resource type="Script" path="res://Scripts/title_page.gd" id="2_2m62g"]
+[ext_resource type="AudioStream" uid="uid://bmogla1khwxw0" path="res://Audios/bgm_loop.mp3" id="2_bsimy"]
 [ext_resource type="PackedScene" uid="uid://bi7f0fxw41sov" path="res://Scenes/CliffRoom.tscn" id="2_hjh60"]
 [ext_resource type="Texture2D" uid="uid://g85y2tn7r5m0" path="res://Arts/intro/title_page1.png" id="2_yr08d"]
 [ext_resource type="PackedScene" uid="uid://c8cu18ysse1ix" path="res://Scenes/PaintingRoom.tscn" id="3_jxguw"]
@@ -121,6 +122,9 @@ _data = {
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_pw2wb")
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_bsimy")
 
 [node name="TitlePage" type="Node2D" parent="."]
 position = Vector2(1049, 557)

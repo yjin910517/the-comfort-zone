@@ -1,5 +1,6 @@
 extends Node2D
 
+signal start_bgm()
 signal go_to_room(destination_name)
 
 @onready var start_button = $Button/ClickDetect
@@ -20,6 +21,7 @@ func _on_start_gui_input(event):
 func _start_sleeping():
 	sleeping.show()
 	start_button.hide() # sleeping doesn't have mouse filter?
+	emit_signal("start_bgm")
 	await get_tree().create_timer(3).timeout
 	sleeping.hide()
 	
