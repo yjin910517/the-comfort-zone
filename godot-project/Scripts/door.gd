@@ -6,6 +6,7 @@ signal door_opened(outcome)
 
 @onready var sprite = $Sprite2D
 @onready var click_detect = $Sprite2D/ClickDetect
+@onready var anime = $AnimationPlayer
 
 
 var outcome
@@ -15,6 +16,9 @@ var outcome
 func _ready() -> void:
 	
 	click_detect.connect("gui_input", Callable(self, "_on_door_gui_input"))
+	
+	var start_pt = randf() * 2
+	anime.seek(start_pt, true)
 
 
 

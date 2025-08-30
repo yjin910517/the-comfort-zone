@@ -12,9 +12,6 @@ func _ready() -> void:
 	
 	token.hide()
 	
-	# test
-	start_finale_scene()
-	
 	
 func start_finale_scene():
 	dialogue_box.start_dialogue()

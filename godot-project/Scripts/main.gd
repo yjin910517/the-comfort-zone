@@ -89,6 +89,9 @@ func _ready() -> void:
 	finale_room.hide()
 	wakeup_scene.hide()
 	
+	# randomize once for the whole game session
+	randomize()
+	
 	
 func _on_token_delivered(room_name):
 	token_collection[room_name] += 1

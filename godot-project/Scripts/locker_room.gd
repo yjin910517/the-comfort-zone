@@ -56,7 +56,7 @@ var pos_set = [
 	[
 		Vector2(46,140),
 		Vector2(236,90),
-		Vector2(400,208),
+		Vector2(400,190),
 		Vector2(580,120),
 		Vector2(760,170)
 	]

@@ -83,9 +83,12 @@ func _on_yes_btn_pressed():
 
 	# stop and choose result
 	flip_icon.stop()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var result_frame = rng.randi_range(0, 1)
+	var random_f = randf()
+	var result_frame
+	if random_f <= 0.5:
+		result_frame = 0
+	else:
+		result_frame = 1
 	flip_icon.frame = result_frame
 	flip_text.frame = result_frame
 	flip_text.show()
